@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <link href="js/bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>user();</script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>footer();</script>
+    <section class="content content30" id="user_permission_acc_content">
+        <div class="container-fluid">
+            <div id="show_msg"></div>
+            <!--<div class="block-header">
+                 </div>-->
+            <div class="row clearfix" id="booking_details_div">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Booking Info</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body">
+
+                            <div class="clearfix">
+                                <table class="table table-bordered table-striped">
+                                    <tr>
+                                        <td width="33%"><strong>Booking NO :</strong> <span id="booking_number"
+                                                class="booking_number" name="booking_number"
+                                                style="margin-left:08px;"></span> <input type="hidden"
+                                                name="hid_book_no" id="hid_book_no" value=""> </td>
+                                        <td width="33%"><strong>Booking From :</strong> <span id="booking_from"
+                                                class="booking_from" name="booking_date"
+                                                style="margin-left:08px;"></span></td>
+                                        <td width="33%"><strong>Booking To :</strong> <span id="booking_to"
+                                                class="booking_to" name="booking_to" style="margin-left:08px;"></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><strong>Client Name :</strong> <span id="customer_name"
+                                                class="customer_name" name="customer_name"
+                                                style="margin-left:08px;"></span> <input type="hidden"
+                                                name="hid_client_id" id="hid_client_id" value=""> <input type="hidden"
+                                                name="hid_client_name" id="hid_client_name" value=""> </td>
+                                        <td><strong>Billing From :</strong> <span class="billing_from"
+                                                name="billing_from" style="margin-left:08px;"></span></td>
+                                        <td><strong>Billing To :</strong> <span class="billing_to" name="billing_to"
+                                                style="margin-left:08px;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Company Name :</strong> <span id="company_name" class="company_name"
+                                                style="margin-left:08px;"></span></td>
+                                        <td><strong>Rent Applicable :</strong> <span id="rent_applicable_spn"
+                                                style="margin-left:08px;"></span></td>
+                                        <td><strong>Remarks :</strong> <span id="remarks_spn" class="remarks"
+                                                style="margin-left:08px;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mail Confirmation :</strong> <span id="mail_confirmation_span"
+                                                class="" style="margin-left:08px;"></span></td>
+                                        <td><span id="mail_file_span"></span></td>
+                                        <td><strong>Booked By:</strong> <span id="booked_by_span"
+                                                style="margin-left:08px;"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <form method="post" id="add_invoice" name="add_invoice" autocomplete="off">
+                                <input type="hidden" name="booking_id" id="booking_id" value="">
+
+                                <div class="row clearfix">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <h2>Generate New Invoice</h2>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="gst_type">Invoice Type *</label>
+                                                <input type="text" class="form-control" value="Tax Invoice" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="invoice_no">Invoice No</label>
+                                                <input type="text" id="invoice_no" class="form-control"
+                                                    name="invoice_no">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- </div>
+			  
+			<div class="row"> -->
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="po_no">Order No. </label>
+                                                <input type="text" id="po_no" class="form-control" name="po_no"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="email_date">Email dated</label>
+                                                <input type="text" id="email_date" class="form-control"
+                                                    name="email_date" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="bank_acc_no"> Select Bank Account *</label>
+                                                <select id="bank_acc_no" name="bank_acc_no" required="required"
+                                                    data-live-search="true" class="form-control show-tick"
+                                                    aria-required="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="hsn_sac_no"> Select HSN / SAC *</label>
+                                                <select id="hsn_sac_no" name="hsn_sac_no" required="required"
+                                                    data-live-search="true" class="form-control show-tick"
+                                                    onchange="getGstPercent();" aria-required="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="gst_type">GST Type *</label>
+                                                <select class="form-control" id="gst_type" name="gst_type" required>
+                                                    <option value="cgst">CGST & SGST</option>
+                                                    <option value="igst">IGST</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="gst_p">GST % *</label>
+                                                <input type="text" id="gst_p" class="form-control" name="gst_p" value=""
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="remarks">Remarks</label>
+                                                <input type="text" id="remarks" class="form-control" name="remarks"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row ">
+                                    <div class="table-responsive">
+
+                                        <table id="mytable"
+                                            class="table table-bordered table-striped table-hover js-exportable dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Site Code</th>
+                                                    <th>Site / Psudo Name</th>
+                                                    <th>Location</th>
+                                                    <th>Media Vehicle</th>
+                                                    <th>Booked Portion</th>
+                                                    <th>Invoice From</th>
+                                                    <th>Invoice To</th>
+                                                    <!-- <th>Site Type</th> -->
+                                                    <th>Size (WxH)</th>
+                                                    <!-- <th>Width(ft)</th>                                            
+						<th>Height(ft)</th> -->
+                                                    <th>Qty</th>
+                                                    <th>Rate PM</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="booking_table" class="booking_table">
+                                            </tbody>
+                                        </table>
+                                        <table id="mytable_tmp"
+                                            class="table table-bordered table-striped table-hover js-exportable dataTable"
+                                            style="display:none;">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Site Code</th>
+                                                    <th>Site / Psudo Name</th>
+                                                    <th>Location</th>
+                                                    <th>Media Vehicle</th>
+                                                    <th>Booked Portion</th>
+                                                    <th>Invoice From</th>
+                                                    <th>Invoice To</th>
+                                                    <!-- <th>Site Type</th> -->
+                                                    <th>Size (WxH)</th>
+                                                    <!-- <th>Width(ft)</th>                                            
+						<th>Height(ft)</th> -->
+                                                    <th>Qty</th>
+                                                    <th>Rate PM</th>
+                                                    <th>Final Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="booking_table_tmp" class="booking_table_tmp">
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="11">Total Amount</td>
+                                                    <td id="total_amt" style="text-align:right;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="11">Discount Type</td>
+                                                    <td>
+                                                        <select name="dis_type" id="dis_type" onchange="clear_field()">
+                                                            <option value="1">Amount</option>
+                                                            <option value="2">Percent</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="11">Discount Amount</td>
+                                                    <td><input type="text" name="dis_amt_per" id="dis_amt_per"
+                                                            onkeyup="calculate_discount()" style="text-align:right;" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="11">Final Amount</td>
+                                                    <td id="final_amt" style="text-align:right;"></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                                <div id="print_div" style="display: inline-block">
+                                    <button id="proceed" type="submit"
+                                        style="background-color: rgb(51, 122, 183); background-image: none;cursor: pointer;font-size: 18px; padding:6px 25px; margin-top:15px; margin-left:600px; color:#fff; border:none; border-radius:5px;"
+                                        onclick="show_pre_data()">Proceed</button>
+                                    <button id="generate_invoice" type="submit"
+                                        style="background-color: rgb(51, 122, 183); background-image: none;cursor: pointer;font-size: 18px; padding:6px 25px; margin-top:15px; margin-left:600px; color:#fff; border:none; border-radius:5px; display:none;">Generate
+                                        Invoice</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </section>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js 
+    <script src="assets/js/admin.js"></script>-->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+
+    <script>
+        var booking_id = getParameterByName('parent_booking_id');
+        $("#booking_id").val(booking_id);
+        var parent_booking_id;
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            //user_access();
+            if (!booking_id) {
+                alert("Invalid request.");
+                redirect_to();
+                return;
+            }
+
+            PopulateBookingDetail(booking_id);
+            PopulateSac();
+            PopulateBankAcc();
+            // alert("aritra");
+        });
+
+        $('#email_date').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            endDate: new Date()
+        });
+
+        /*
+        $('#invoice_from').datepicker({
+          autoclose: true,
+          format: 'dd-mm-yyyy'
+        });
+        $('#invoice_to').datepicker({
+          autoclose: true,
+          format: 'dd-mm-yyyy'
+        });
+        */
+
+
+
+        var table = $('#mytable').DataTable();
+        function PopulateBookingDetail(booking_id) {
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_availability_status.php",
+                data: { booking_id: booking_id, action_type: 'OOH_DETAIL' },
+                dataType: 'json', // what type of data do we expect back from the server
+
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    console.log(data.booking_info);
+                    var extension_prospect = '';
+                    var resultHTML = '';
+                    var i = 0;
+
+                    if (data.status) {
+                        parent_booking_id = data.booking_info.parent_booking_id;
+                        if (data.booking_info.rent_applicable_flag == 1) { var rent_applicable = "Yes"; }
+                        else { var rent_applicable = "No"; }
+                        $(".booking_number").text(data.booking_info.booking_no);
+                        //alert(data.booking_info.booking_no);
+                        $("#hid_book_no").val(data.booking_info.booking_no);
+
+                        $(".booking_from").text(data.booking_info.booking_from);
+                        $("#booking_from").text(data.booking_info.booking_from);
+                        $(".booking_to").text(data.booking_info.booking_to);
+                        $(".billing_from").text(data.booking_info.billing_from);
+                        var mail_confirmation_txt = '';
+                        if (data.booking_info.mail_confirmation_flag == '1') {
+                            mail_confirmation_txt = "Yes; Dated: " + data.booking_info.mail_confirmation_date;
+                            $("#mail_confirmation_flag").val(data.booking_info.mail_confirmation_flag);
+                            $("#mail_confirmation_div").show();
+                            $("#mail_confirmation_date").val(data.booking_info.mail_confirmation_date);
+                        }
+                        else {
+                            mail_confirmation_txt = "No";
+                            $("#mail_confirmation_flag").val(data.booking_info.mail_confirmation_flag);
+                            $("#mail_confirmation_div").hide();
+                            $("#mail_confirmation_date").val("");
+                        }
+                        $("#mail_confirmation_flag").selectpicker('refresh');
+                        $("#mail_confirmation_span").text(mail_confirmation_txt);
+                        if (data.booking_info.mail_file) {
+                            $("#mail_file_span").html('Uploaded File: <a href="upload_file/' + data.booking_info.mail_file + '" target="_blank" title="Uploaded File"><i class="material-icons">attachment</i> </a>');
+                        }
+                        $(".billing_to").text(data.booking_info.billing_to);
+                        $(".customer_name").text(data.booking_info.client_name);
+                        $("#hid_client_id").val(data.booking_info.client_id);
+                        $(".company_name").text(data.booking_info.company_name);
+                        //$("#booked_by_span").text(data.booking_info.booked_user_name);
+                        $("#booked_by_span").text(data.booking_info.created_by_user);
+                        $("#rent_applicable_spn").text(rent_applicable);
+                        if (data.booking_info.contract_flag == "1") {
+
+                            $("#po_generated").attr("disabled", "true");
+                            $(".contract_date").show();
+                            $("#contract_date").val(data.booking_info.contract_date);
+                            $("#contract_date").attr("disabled", "true");
+
+
+                        }
+                        $(".remarks").text(data.booking_info.remarks);
+                        $(".remarks_edit").val(data.booking_info.remarks);
+                        $("#brand_name").val(data.booking_info.brand_name);
+                        //getBookedBy(data.booking_info.booked_by);
+                        $("#rent_applicable").val(data.booking_info.rent_applicable_flag);
+                        $("#rent_applicable").selectpicker('refresh');
+                        /*$("#invoice_generated").val(data.booking_info.invoice_generated_flag);
+                        $("#invoice_generated").selectpicker('refresh');*/
+                        if (data.booking_info.po_generated_flag == 1) {
+                            $(".po_number").show();
+                        }
+
+                        $.each(data.booking_list, function (key, value) {
+                            i++;
+                            var sqft = '';
+                            sqft = value.booked_sqft;
+                            if (value.extension_prospect == 1) { extension_prospect = "Yes"; }
+                            else { extension_prospect = "No"; }
+
+                            resultHTML += '<tr class="det_emp">';
+                            resultHTML += '<td><input type="checkbox" class="form-check-input site_list" name="selected_site[]" id="selected_site_' + i + '" value="' + value.site_id + '" /><label for="selected_site_' + i + '">' + i + '</label></td>';
+                            resultHTML += '<td>' + value.site_code + '</td>';
+                            resultHTML += '<td><input type="text" name="site_psudo_name_' + value.site_id + '" class="form-control" value="' + value.site_name + '" style="width:300px;" /></td>';
+                            resultHTML += '<td>' + value.location_name + '</td>';
+                            resultHTML += '<td>' + value.media_vh_name + '</td>';
+                            resultHTML += '<td>' + value.booked_portion + '</td>';
+                            resultHTML += '<td><input type="text" id="invoice_from_' + i + '" class="form-control invoice_from" name="invoice_from_' + value.site_id + '" style="width:120px;" value="' + value.billing_from + '"  ></td>';
+                            resultHTML += '<td><input type="text" id="invoice_to_' + i + '" class="form-control invoice_to" name="invoice_to_' + value.site_id + '" style="width:120px;" value="' + value.billing_to + '" ></td>';
+                            resultHTML += '<td style="text-align:right;">' + value.width + ' x ' + value.height + '</td>';
+                            resultHTML += '<td style="text-align:right;"><input type="text" class="form-control" style="width:50px; text-align:right;" name="qty_' + value.site_id + '" id="qty_' + i + '" value="' + value.site_qty + '"/></td>';
+                            resultHTML += '<td style="text-align:right;"><input type="text" class="form-control" style="width:100px; text-align:right;" name="rate_' + value.site_id + '" id="rate_' + i + '" value="' + value.booking_amount + '"/> </td>';
+                            resultHTML += '</tr>';
+                            //<input type="hidden" name="rate_' + value.site_id + '" id="rate_'+i+'" value="'+value.booking_amount+'"/>			
+                        });
+                    } else {
+                        resultHTML = '<tr><td colspan="10">No Booking Available</td></tr>';
+                    }
+
+
+
+                    $("#mytable").dataTable().fnDestroy();
+
+                    $('#booking_table').html(resultHTML);
+                    focus_blur();
+                    //$('#mytable').DataTable();
+                    table = $('#mytable').DataTable();
+
+
+
+                    var invoice_from = $('.invoice_from').datepicker({
+                        autoclose: true,
+                        format: 'dd/mm/yyyy',
+                        startDate: data.booking_info.billing_from,
+                        endDate: data.booking_info.billing_to,
+                    })/*.on('changeDate', function (ev) {
+		if (ev.date.valueOf() > invoice_to.datepicker("getDate").valueOf()) {
+			var newDate = new Date(ev.date);
+			newDate.setDate(newDate.getDate());
+			invoice_to.datepicker("update", newDate);
+		}
+		else{
+			invoice_to.datepicker("update");
+		}
+	})*/;
+                    $('.invoice_from').on('show', function (e) {
+                        if (e.date) { $(this).data('stickyDate', e.date); }
+                        else { $(this).data('stickyDate', null); }
+                    }).on('hide', function (e) {
+                        var stickyDate = $(this).data('stickyDate');
+                        if (!e.date && stickyDate) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+                    });
+
+                    var invoice_to = $('.invoice_to').datepicker({
+                        /*beforeShowDay: function (date) {
+                            if (!invoice_from.datepicker("getDate").valueOf()) {
+                                return date.valueOf() >= new Date().valueOf();
+                            } else {
+                                return date.valueOf() >= invoice_from.datepicker("getDate").valueOf();
+                            }
+                        },*/
+                        autoclose: true,
+                        format: 'dd/mm/yyyy',
+                        startDate: data.booking_info.billing_from,
+                        endDate: data.booking_info.billing_to,
+                    })/*.on('changeDate', function (ev) {})*/;
+                    $('.invoice_to').on('show', function (e) {
+                        if (e.date) { $(this).data('stickyDate', e.date); }
+                        else { $(this).data('stickyDate', null); }
+                    }).on('hide', function (e) {
+                        var stickyDate = $(this).data('stickyDate');
+                        if (!e.date && stickyDate) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+                    });
+
+
+
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+        }
+
+        function PopulateSac() {
+            //var dt = new Date();
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_invoice.php",
+                data: { action_type: 'HSN_SAC' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var resultHTML = '<option value="">Select HSN</option>';
+                    if (data.status) {
+                        $.each(data.hsn_list, function (key, value) {
+                            resultHTML += '<option value="' + value.hsn_sac_code + '" data-gst_percent="' + value.gst_percent + '">' + value.hsn_sac_code + '</option>';
+                        });
+                    } else {
+                        resultHTML = '<option value="">No Records Available</option>';
+                    }
+                    $("#hsn_sac_no").html(resultHTML);
+                    $('#hsn_sac_no').selectpicker('refresh');
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+
+        function getGstPercent() {
+            var gst = $('#hsn_sac_no').find('option:selected').data("gst_percent");
+            $("#gst_p").val(gst);
+        }
+
+
+        function PopulateBankAcc() {
+            //var dt = new Date();
+            //alert(booking_id);
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_invoice.php",
+                data: { action_type: 'BANK_ACC', 'booking_id': booking_id },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var resultHTML = '<option value="">Select Bank Account</option>';
+                    if (data.status) {
+                        $.each(data.acc_list, function (key, value) {
+                            resultHTML += '<option value="' + value.bank_account_id + '" >' + value.account_no + '</option>';
+                        });
+                    } else {
+                        resultHTML = '<option value="">No Records Available</option>';
+                    }
+                    $("#bank_acc_no").html(resultHTML);
+                    $('#bank_acc_no').selectpicker('refresh');
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+
+
+        function show_pre_data() {
+            event.preventDefault();
+            $("#proceed").hide();
+            $("#generate_invoice").show();
+            $("#mytable").hide();
+            $("#mytable_tmp").show();
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_invoice.php?action_type=ADD_TEMP_INVOICE',
+                data: $("#add_invoice").serializeArray(),
+                dataType: 'json',
+                encode: true
+
+            })
+                .done(function (data) {
+                    var resultHTML = '';
+                    var i = 0;
+                    var total_amount = 0;
+                    if (data.status) {
+
+                        $.each(data.booking_list_tmp, function (key, value) {
+                            i++;
+
+                            resultHTML += '<tr class="det_emp">';
+                            resultHTML += '<td>' + i + '</td>';
+                            resultHTML += '<td>' + value.site_code + '</td>';
+                            resultHTML += '<td>' + value.site_psudo_name + '</td>';
+                            resultHTML += '<td>' + value.location_name + '</td>';
+                            resultHTML += '<td>' + value.media_vh_name + '</td>';
+                            resultHTML += '<td>' + value.booked_portion + '</td>';
+                            resultHTML += '<td>' + value.invoice_from_tmp + '</td>';
+                            resultHTML += '<td>' + value.invoice_to_tmp + '</td>';
+                            //resultHTML += '<td>' + value.site_type_name + '</td>';
+                            resultHTML += '<td style="text-align:right;">' + value.width + ' x ' + value.height + '</td>';
+                            //resultHTML += '<td style="text-align:right;">' + value.width +'</td>';
+                            //resultHTML += '<td style="text-align:right;">' + value.height +'</td>';
+                            resultHTML += '<td style="text-align:right;">' + value.quantity_tmp + '</td>';
+                            resultHTML += '<td style="text-align:right;">' + value.rate_tmp + '</td>';
+                            resultHTML += '<td style="text-align:right;">' + value.final_rate_tmp + '</td>';
+                            resultHTML += '</tr>';
+                            total_amount = total_amount + value.final_rate_tmp * 1;
+                        });
+
+                    } else {
+                        resultHTML = '<tr><td colspan="12">No Booking Available</td></tr>';
+                    }
+
+                    $("#mytable_tmp").dataTable().fnDestroy();
+                    $('#booking_table_tmp').html(resultHTML);
+                    //focus_blur();
+                    //$('#mytable').DataTable();
+                    table = $('#mytable_tmp').DataTable();
+                    $("#total_amt").text(parseInt(total_amount).toFixed(2));
+                    $("#final_amt").text(parseInt(total_amount).toFixed(2));
+                })
+        }
+
+
+        function calculate_discount() {
+            var total_amt = $("#total_amt").text();
+            var dis_type = $("#dis_type").val();
+            var dis_amt_per = $("#dis_amt_per").val();
+            var dis_amt = 0;
+            var final_amt = 0;
+            if (dis_type == 2) {
+                dis_amt = total_amt * (dis_amt_per / 100);
+            }
+            else {
+                dis_amt = dis_amt_per;
+            }
+            final_amt = total_amt - dis_amt;
+            $("#final_amt").text(parseInt(final_amt).toFixed(2));
+        }
+
+        function clear_field() {
+            $("#dis_amt_per").val(0);
+            $("#final_amt").text($("#total_amt").text());
+        }
+
+
+
+        $("#add_invoice").submit(function (event) {
+            event.preventDefault();
+            //$("#contract_date").removeAttr("disabled");
+            //$("#po_generated").removeAttr("disabled");
+            //$(this).prop("disabled",true);
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_invoice.php?action_type=ADD_EDIT_INVOICE',
+                data: $(this).serializeArray(),
+                dataType: 'json',
+                encode: true
+
+            })
+                .done(function (data) {
+                    console.log(data);
+                    //alert('done');
+                    var resulthtml = '';
+                    if (data.result.status == 1) {
+                        resulthtml = '<div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + data.result.msg + '</div>';
+                    }
+                    else {
+                        resulthtml = '<div class="alert alert-danger alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>Unable to generate the invoice!</div>';
+                    }
+                    $('#show_msg').html(resulthtml);
+                    //return;
+                    var href = "invoice_manage.html";
+                    setTimeout(function () {
+                        window.location.href = href + '?id=' + booking_id;
+                        $(this).prop('disabled', false);
+                    }, 2000);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    $(this).prop("disabled", false);
+                    console.log(data);
+                });
+        })
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+ <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />   
+   
+  <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+       <link href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+       <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script> 
+    <script src="js/common-functions.js"></script>
+
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+	</div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+   <script>user();</script>
+   <!-- #User Info -->
+            
+
+            <!-- Menu -->
+            <div id="mob_nav_ajax_user"></div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <script>footer();</script>
+<section class="content content30" id="user_permission_acc_content">
+        <div class="container-fluid">
+		<div id="show_msg"></div>
+            <!--<div class="block-header">
+                 </div>-->
+       <div class="row clearfix" id="booking_details_div">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Booking Detail</h2>
+                                </div>
+								<div class="col-xs-12 col-sm-6 align-right js-sweetalert">
+                                    <button type="button" class="btn btn-primary waves-effect" id="edit_details" ><i class="material-icons">edit</i> Edit Booking</button>
+									<button type="button" class="btn btn-primary waves-effect" onclick="redirectExtend();" id="extend_btn"><i class="material-icons">add</i> Extend Booking</button>
+									<button type="button" class="btn btn-primary waves-effect" onclick="window.location.href='booking_list.html'"><i class="material-icons">list</i> Booking List</button>
+									<button type="button" class="btn btn-primary waves-effect" onclick="redirectInvoice()"><i class="material-icons">list</i> Invoice List</button>
+                                </div>
+								
+                            </div>
+                        </div>
+           
+                        <div class="body">
+                     
+            <div class="clearfix">
+              
+               <table class="table table-bordered table-striped">
+                 
+                  <tr>
+                      <td width="33%"><strong>Booking NO :</strong> <span id="booking_number" class="booking_number" name="booking_number" style="margin-left:08px;"></span></td>
+                      
+                      <td width="33%"><strong>Booking From :</strong> <span id="booking_from" class="booking_from" name="booking_date"  style="margin-left:08px;"></span></td>
+                     
+                      <td width="33%"><strong>Booking To :</strong> <span id="booking_to" class="booking_to" name="booking_to" style="margin-left:08px;"></span></td>
+                      
+                  </tr>
+                  
+                  <tr>
+                      <td><strong>Client Name :</strong> <span id="customer_name" class="customer_name" name="customer_name"  style="margin-left:08px;"></span></td>
+                      <td><strong>Billing From :</strong> <span class="billing_from"  name="billing_from" style="margin-left:08px;"></span></td>
+                      <td><strong>Billing To :</strong> <span class="billing_to" name="billing_to"  style="margin-left:08px;"></span></td>
+                      
+                      
+                  </tr>
+                   
+             
+               
+               
+             <tr>
+                     
+                  </tr>
+                  
+                  <tr>
+                     <td><strong>Company Name :</strong> <span id="company_name" class="company_name"  style="margin-left:08px;"></span></td>
+                      <td><strong>Rent Applicable :</strong>  <span id="rent_applicable_spn" style="margin-left:08px;"></span></td>
+                       <td><strong>Remarks :</strong>  <span id="remarks_spn" class="remarks" style="margin-left:08px;"></span></td>
+                      
+                      
+                  </tr>
+				<tr>
+                     <td><strong>Package Amount :</strong> <span id="package_amount_text" class="package_amount_text"  style="margin-left:08px;"></span></td>
+                      <td><strong>Po Number :</strong>  <span id="po_number_text" class="po_number_text" style="margin-left:08px;"></span></td>
+                      <td><strong>Invoice status :</strong>  <span id="invoice_status_text" class="invoice_status_text" style="margin-left:08px;"></span></td>
+                </tr>
+				<tr>
+                     <td><strong>Mail Confirmation :</strong> <span id="mail_confirmation_span" class="" style="margin-left:08px;"></span></td>
+                      <td><span id="mail_file_span"></span></td>
+                      <td><strong>Booked By:</strong> <span id="booked_by_span" style="margin-left:08px;"></span></td>
+                </tr>
+                </table>
+				
+				
+			</div>    
+			
+			<div class="row ">
+			<div class="table-responsive">
+                <table id="mytable" class="table table-bordered table-striped table-hover js-exportable dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" class="form-check-input" name="select_all" id="select_all" value="1" /><label for="select_all">#</label></th>
+                                            <th>Site Code</th>
+                                            <th>Site Name</th>
+                                            <th>Location</th>
+                                            <th>Site Type</th>
+                                            <th>Media Vehicle</th>
+                                            <th>Face</th>
+                                            <th>Width</th>                                            
+                                            <th>Height</th>                                            
+                                            <th>Total Size(Sqft)</th>                                            
+                                            <th>Price/PM</th>                                            
+                                            <th>Extension Prospect</th>                                            
+                                            <th>Booked Portion</th>                                            
+										</tr>
+                                    </thead>
+                                    
+                                    <tbody id="booking_table" class="booking_table"></tbody>
+                                </table>
+                            </div>
+                            
+                            </div>
+							
+							<div class="header" id="extend_sites_buttons_div" style="display:none;">
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-12 align-center js-sweetalert">
+										<button type="button" class="btn bg-green waves-effect" onclick="redirectExtend('selected_site');" id="extend_btn_selected"><i class="material-icons">add</i>Extend Selected Sites</button>
+									</div>
+								</div>
+							</div>
+							
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="row clearfix" id="booking_edit_details_div" style="display:none">
+			<form id="booking_edit_frm">
+                <input type="hidden" name="booking_id" id="booking_id">
+				<div class="col-md-12">
+                    <div class="card">
+                        <div class="body">
+                     
+            <div class="clearfix">
+              
+               <table class="table table-bordered table-striped">
+                 
+                  <tr>
+                      <td width="33%"><strong>Booking NO :</strong> <span class="booking_number" name="booking_number" style="margin-left:08px;"></span></td>
+                      
+                      <td width="33%"><strong>Booking From :</strong> <span class="booking_from" name="booking_date"  style="margin-left:08px;"></span></td>
+                     
+                      <td width="33%"><strong>Booking To :</strong> <span class="booking_to" name="booking_to" style="margin-left:08px;"></span></td>
+                      
+                  </tr>
+                  </table>
+                 
+				<div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" id="billing_from" class="form-control" name="billing_from" onchange="check_date();" required>
+                                        <label class="form-label">Billing From</label>
+                                    </div>
+                                </div> 
+                            </div>
+                            
+							<div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" id="billing_to" class="form-control" name="billing_to" onchange="check_date();" required>
+                                        <label class="form-label">Billing To</label>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    <div class="form-line"><label for="client" class="form-label">Select Client</label> 
+                                       <select class="form-control" id="client" name="client" data-live-search="true" required>
+                                        </select>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    <div class="form-line"><label for="company" class="form-label">Select Company</label> 
+                                       <select class="form-control" id="company" name="company" data-live-search="true" required>
+                                        </select>
+                                    </div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    <div class="form-line">
+                                       <select class="form-control" id="booked_by" name="booked_by" data-live-search="true" data-show-subtext="true" required>
+                                        </select>
+                                    </div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    
+                                    <div class="form-line"><label for="rent_applicable" class="form-label">Rent Applicable Yes/No?</label> 
+                                       <select class="form-control" id="rent_applicable" name="rent_applicable" required>
+                                        <option value="">Rent Applicable</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+										</select>
+                                   
+									</div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3 package_amount" style="display:none">
+                               <div class="form-group form-float">
+                                    <div class="form-line">
+                                       <input class="form-control" id="package_amount" name="package_amount">
+									   <label class="form-label"> Package Amount </label>
+                                   </div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" id="brand_name" class="form-control" name="brand_name">
+                                        <label class="form-label">Display</label>
+                                    </div>
+                                </div> 
+                            </div> 
+							
+							<div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    <div class="form-line"><label for="po_generated" class="form-label">PO Generated Yes/No?</label> 
+                                       <select class="form-control" id="po_generated" name="po_generated" required>
+                                        <option value="">P.O Generated</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+										</select>
+									</div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3 po_number" style="display:none">
+                               <div class="form-group form-float">
+                                    <div class="form-line">
+                                       <input class="form-control" id="po_number" name="po_number">
+									   <label class="form-label">Po Number </label>
+                                   </div>
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-3" >
+                               <div class="form-group form-float contract_sign" style="display:none">
+                                    <div class="form-line"><label for="contract_sign" class="form-label">Contract Sign Flag</label> 
+                                       <select class="form-control" id="contract_sign" name="contract_sign" >
+                                        <option value="">Contract Sign</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                  </select>
+                                   </div>
+                                </div> 
+                    </div> 
+                    <div class="col-sm-3 contract_date" style="display:none">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <!-- <input type="text" id="billing_to" class="form-control" name="billing_to" onchange="check_date()" required> -->
+                                        <input type="text" id="contract_date" class="form-control" name="contract_date">
+                                        <label class="form-label" for="contract_date">Contract Date</label>
+                                    </div>
+                                </div> 
+                            </div>          
+                  <div class="col-sm-3 gst_applicable" style="display:none">
+                               <div class="form-group form-float">
+                                    <div class="form-line"><label for="gst_applicable" class="form-label">Gst Applicable Flag</label> 
+                                       <select class="form-control" id="gst_applicable" name="gst_applicable">
+                                        <option value="">Gst Applicable</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                  </select>
+                                   </div>
+                                </div> 
+                    </div> 
+							
+							<div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    <div class="form-line">
+                                       <select class="form-control" id="mail_confirmation_flag" name="mail_confirmation_flag" required>
+                                        <option value="">Mail Confirmation</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+										</select>
+										<!-- <label class="form-label" for="mail_confirmation_flag">Mail Confirmation</label> -->
+									</div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3" style="display:none" id="mail_confirmation_div">
+                               <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                       <input class="form-control" id="mail_confirmation_date" name="mail_confirmation_date">
+									   <label class="form-label" for="mail_confirmation_date">Mail Date</label>
+                                   </div>
+                                </div> 
+                            </div>
+							<div class="col-sm-3" id="mail_file_div">
+                               <div class="form-group form-float">
+                                  <div class="form-line focused-cus">
+									<input type="file" id="mail_file" name="mail_file" class="form-control" style="padding:0;" accept="image/jpeg,image/x-png,application/pdf" />	<!-- accept="image/*" -->
+									<label class="form-label" for="mail_file">Upload File</label>
+                                  </div>
+                                </div> 
+                            </div>
+							<!--<div class="col-sm-3">
+                               <div class="form-group form-float">
+                                    <div class="form-line">
+                                       <select class="form-control" id="invoice_generated" name="invoice_generated" required>
+                                        <option value="">Invoice Generated</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+										</select>
+                                   
+									</div>
+                                </div> 
+                            </div>-->
+							
+							<div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" id="remarks" class="form-control remarks_edit" name="remarks">
+                                        <label class="form-label">Remarks</label>
+                                    </div>
+                                </div> 
+                            </div>
+				
+			</div>    
+			<div class="row">
+			<div class="table-responsive">
+                <table id="mytable" class="table table-bordered table-striped table-hover js-exportable dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Site Code</th>
+                                            <th>Site Name</th>
+                                            <th>Location</th>
+                                            <th>Site Type</th>
+                                            <th>Media Vehicle</th>
+                                            <th>Face</th>
+                                            <th>Width</th>                                            
+                                            <th>Height</th>                                            
+                                            <th>Total Size(Sqft)</th>                                            
+                                            <th>Price/PM</th>                                            
+                                            <th>Extension Prospect</th>                                            
+                                            <th>Booked Portion</th>                                            
+										</tr>
+                                    </thead>
+                                    
+                                    <tbody id="booking_table_edit"></tbody>
+                                </table>
+                            </div>
+						</div>	
+							
+							
+                        </div>
+                    </div>
+					<button class="btn bg-green waves-effect" id="save_edit_changes"> Save Changes </button>
+                </div>
+				
+				</form>
+            </div>
+        </div>
+    </section>
+	<script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+    
+    <!-- Jquery DataTable Plugin Js -->
+   <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>   
+   <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    
+    <!-- Custom Js 
+    <script src="assets/js/admin.js"></script>-->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+    
+<script>
+	var booking_id = getParameterByName('booking_id');
+	var parent_booking_id;
+	$(document).ready(function(){
+		getAppName();
+		isLogin();  
+		bind_top_nav();
+		bind_menu_mobile();
+		user_access();
+		if(!booking_id){
+			alert("Invalid request.");
+			redirect_to();
+			return;
+		}
+	 $("#booking_id").val(booking_id);
+        
+		PopulateBookingList(booking_id);
+	});	
+
+    
+	    $('#edit_details').on('click', function () {
+		$("#booking_edit_details_div").show();
+		$("#booking_details_div").hide();
+		})
+	var table = $('#mytable').DataTable();
+	function PopulateBookingList(booking_id){
+		$.ajax({
+			type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			url:  "handler/ajax_availability_status.php",
+			data: {booking_id:booking_id,action_type : 'BOOKING_DETAIL'},
+			dataType: 'json', // what type of data do we expect back from the server
+			encode: true
+		})
+		// using the done promise callback
+		.done(function(data) {console.log(data.booking_info);
+			var extension_prospect='';
+			var resultHTML =resultHTMLEdit= '';var i=0;
+			if (data.status) {
+				parent_booking_id = data.booking_info.parent_booking_id;
+				if(data.booking_info.rent_applicable_flag == 1){var rent_applicable="Yes";}
+				else{var rent_applicable="No";}
+				$(".booking_number").text(data.booking_info.booking_no);
+				$(".booking_from").text(data.booking_info.booking_from);
+				$(".booking_to").text(data.booking_info.booking_to);
+                var booking_to = data.booking_info.booking_to;
+                     booking_to = booking_to.split("-");
+                var new_format = booking_to[2]+"/"+booking_to[1]+"/"+booking_to[0];
+                    new_format = new Date(new_format);
+                 var booking_to_chk = new Date(new_format.getFullYear(), new_format.getMonth(), new_format.getDate()+1, 0, 0, 0, 0);
+                 var cuurent_date = new Date();
+                 if(booking_to_chk<cuurent_date)
+               {
+                  //$("#edit_details").hide();
+                    $("#extend_btn").hide();
+                   
+                    $("#extend_btn_selected").hide();
+                 }
+                 else
+                 {
+                 
+                     //$("#edit_details").show();
+                    $("#extend_btn").show();
+                    $("#extend_btn_selected").show();
+                 }
+				$(".billing_from").text(data.booking_info.billing_from);
+				$(".package_amount_text").text(data.booking_info.package_amount);
+				var mail_confirmation_txt = '';
+				if(data.booking_info.mail_confirmation_flag == '1'){
+					mail_confirmation_txt = "Yes; Dated: " + data.booking_info.mail_confirmation_date;
+					$("#mail_confirmation_flag").val(data.booking_info.mail_confirmation_flag);
+					$("#mail_confirmation_div").show();
+					$("#mail_confirmation_date").val(data.booking_info.mail_confirmation_date);
+				}
+				else{
+					mail_confirmation_txt = "No";
+					$("#mail_confirmation_flag").val(data.booking_info.mail_confirmation_flag);
+					$("#mail_confirmation_div").hide();
+					$("#mail_confirmation_date").val("");
+				}
+				$("#mail_confirmation_flag").selectpicker('refresh');
+				$("#mail_confirmation_span").text(mail_confirmation_txt);
+				if(data.booking_info.mail_file){
+					$("#mail_file_span").html('Uploaded File: <a href="upload_file/' + data.booking_info.mail_file +'" target="_blank" title="Uploaded File"><i class="material-icons">attachment</i> <!-- Email Copy --> </a>');
+				}
+				if(data.booking_info.package_amount=="N/A"){data.booking_info.package_amount="";}
+				$("#package_amount").val(data.booking_info.package_amount);
+				$(".po_number_text").text(data.booking_info.po_number);
+				if(data.booking_info.po_number=="N/A"){
+				data.booking_info.po_number="";
+				}
+				$("#po_number").val(data.booking_info.po_number);
+				$(".billing_to").text(data.booking_info.billing_to);
+				$(".customer_name").text(data.booking_info.client_name);
+				$(".company_name").text(data.booking_info.company_name);
+				$("#booked_by_span").text(data.booking_info.booked_user_name);
+				$("#rent_applicable_spn").text(rent_applicable);
+        if(data.booking_info.contract_flag=="1")
+        {
+          $(".contract_sign").show();
+          $("#contract_sign").val(data.booking_info.contract_flag);
+
+          $("#po_generated").attr("disabled","true");
+           $("#contract_sign").selectpicker('refresh');
+          $("#contract_sign").attr("disabled","true");
+          $("#contract_sign").selectpicker('refresh');
+          
+           $(".contract_date").show();
+          $("#contract_date").val(data.booking_info.contract_date);
+          $("#contract_date").attr("disabled","true");
+            $(".gst_applicable").show();
+            $("#gst_applicable").val(data.booking_info.gst_applicable_flag);
+             $("#gst_applicable").attr("disabled","true");
+            $("#gst_applicable").selectpicker('refresh');
+           
+        
+        }
+        else
+        {
+          $("#contract_sign").val(data.booking_info.contract_flag);
+          $("#contract_sign").selectpicker('refresh');
+          conrt_change();
+        }
+				$(".remarks").text(data.booking_info.remarks);
+				$(".remarks_edit").val(data.booking_info.remarks);
+				$("#brand_name").val(data.booking_info.brand_name);
+				PopulateClient(data.booking_info.client_id);
+				populatecomapny(data.booking_info.company_id);
+				getBookedBy(data.booking_info.booked_by);
+				$("#rent_applicable").val(data.booking_info.rent_applicable_flag);
+				$("#rent_applicable").selectpicker('refresh');
+				/*$("#invoice_generated").val(data.booking_info.invoice_generated_flag);
+				$("#invoice_generated").selectpicker('refresh');*/
+				$("#po_generated").val(data.booking_info.po_generated_flag);
+				$("#po_generated").selectpicker('refresh');
+        if(data.booking_info.po_generated_flag==1)
+        {
+          $("#po_generated").attr("disabled","true");
+           $("#contract_sign").selectpicker('refresh');
+        }
+        else
+        {
+          Pochange();
+        }
+				Rentchange();
+				
+				$("#invoice_status_text").text(data.msg);
+				$('#billing_from').datepicker({
+                    format: 'dd/mm/yyyy',
+                    todayHighlight: true,
+                    autoclose: true
+                }).datepicker('setDate', data.booking_info.billing_from);
+				$('#billing_from').on('show', function(e){
+					if ( e.date ) { $(this).data('stickyDate', e.date); }
+					else { $(this).data('stickyDate', null); }
+				}).on('hide', function(e){
+					var stickyDate = $(this).data('stickyDate');
+					if ( !e.date && stickyDate ) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+				});
+				$('#billing_to').datepicker({
+                    format: 'dd/mm/yyyy',
+                    todayHighlight: true,
+                    autoclose: true
+                }).datepicker('setDate', data.booking_info.billing_to);
+				$('#billing_to').on('show', function(e){
+					if ( e.date ) { $(this).data('stickyDate', e.date); }
+					else { $(this).data('stickyDate', null); }
+				}).on('hide', function(e){
+					var stickyDate = $(this).data('stickyDate');
+					if ( !e.date && stickyDate ) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+				});
+				$.each(data.booking_list, function(key, value) {i++;
+					if(value.extension_prospect == 1){extension_prospect="Yes";}
+					else{extension_prospect="No";}
+					resultHTML += '<tr class="det_emp">';
+					resultHTMLEdit += '<tr class="det_emp">';
+					resultHTML += '<td><input type="checkbox" class="form-check-input site_list" name="selected_site[]" id="selected_site_' + i + '" value="' + value.site_id + '"  onclick="selected_site_string('+i+')"/><label for="selected_site_' + i + '">' + i + '</label></td>';
+					resultHTMLEdit += '<td><label for="selected_site_' + i + '">' + i + '</label></td>';
+					resultHTML += '<td>' + value.site_code + '</td>';
+					resultHTMLEdit += '<input type="hidden" name="booking_detail_id[]" value="' + value.booking_detail_id + '"><td>' + value.site_code + '</td>';
+					resultHTML += '<td>' + value.site_name + '</td>';
+					resultHTMLEdit += '<td>' + value.site_name + '</td>';
+					resultHTML += '<td>' + value.location_name + '</td>';
+					resultHTMLEdit += '<td>' + value.location_name + '</td>';
+					resultHTML += '<td>' + value.site_type_name + '</td>';
+					resultHTMLEdit += '<td>' + value.site_type_name + '</td>';
+					resultHTML += '<td>' + value.media_vh_name + '</td>';
+					resultHTMLEdit += '<td>' + value.media_vh_name + '</td>';
+					resultHTML += '<td>' + value.face_side +'</td>';
+					resultHTMLEdit += '<td>' + value.face_side +'</td>';
+					resultHTML += '<td>' + value.width +'</td>';
+					resultHTMLEdit += '<td>' + value.width +'</td>';
+					resultHTML += '<td>' + value.height +'</td>';
+					resultHTMLEdit += '<td>' + value.height +'</td>';
+					resultHTML += '<td>' + value.sqft +'</td>';
+					resultHTMLEdit += '<td>' + value.sqft +'</td>';
+					resultHTML += '<td style="text-align:right;">' + value.booking_amount +'</td>';
+					resultHTMLEdit += '<td><input style="text-align:right;border: none;border-bottom: 1px solid #ccc;" name="booking_amount[]" value="' + value.booking_amount +'"></td>';
+					resultHTML += '<td>' + extension_prospect +'</td>';
+					resultHTMLEdit += '<td>' + extension_prospect +'</td>';
+					resultHTML += '<td>' + value.booked_portion +'</td>';
+					resultHTMLEdit += '<td>' + value.booked_portion +'</td>';
+					resultHTML += '</tr>';
+					resultHTMLEdit += '</tr>';
+				});
+			} else {
+				resultHTML = '<tr><td colspan="13">No Booking Available</td></tr>';
+				resultHTMLEdit = '<tr><td colspan="13">No Booking Available</td></tr>';
+			}
+			$("#mytable").dataTable().fnDestroy();
+			$('#booking_table').html(resultHTML);
+			$('#booking_table_edit').html(resultHTMLEdit);
+			focus_blur();
+			//$('#mytable').DataTable();
+			table = $('#mytable').DataTable();
+			$('#rent_applicable').change(function(){
+			Rentchange();
+			})
+			$('#po_generated').change(function(){
+			Pochange();
+
+			})
+
+      $("#contract_sign").change(function(){
+        conrt_change(data.booking_info.booking_from);
+      })
+      $("#gst_applicable").change(function(){
+        gstchange();
+      })
+		})
+		// using the fail promise callback
+		.fail(function(data) {
+			// show any errors
+			// best to remove for production
+			console.log(data);
+		});
+	}
+	function Pochange(){
+	var po_generated=$("#po_generated").val();
+	if(po_generated=="1"){
+	$('.po_number').show();
+	$('.po_number').find('.form-line').addClass('focused');
+	$("#po_number").attr("required", "true");
+  $(".contract_sign").hide();
+  $("#contract_sign").prop("required", false);
+    $('.contract_date').hide();
+      $("#contract_date").prop("required",false);
+      $('.gst_applicable').hide();
+      $("#gst_applicable").prop("required",false);
+      $("#gst_applicable").val("");
+      $("#gst_applicable").selectpicker("refresh");
+       $("#contract_sign").val("");
+       $("#contract_sign").selectpicker("refresh");
+       $("#contract_date").val("");
+	}else{
+	$('.po_number').hide();
+	$("#po_number").prop('required',false);
+   $(".contract_sign").show();
+  $("#contract_sign").attr("required", "true");
+	}
+	}
+	function Rentchange(){
+	var rent_applicable=$("#rent_applicable").val();
+	if(rent_applicable=="0"){
+	//focus_blur();
+	$('.package_amount').show();
+	$('.package_amount').find('.form-line').addClass('focused');
+	$("#package_amount").attr("required", "true");
+	}else{
+	$('.package_amount').hide();
+	$("#package_amount").prop('required',false);
+	}
+	}
+  function conrt_change(book_date)
+  {
+     var contract_sign = $("#contract_sign").val();
+    if(contract_sign=="1")
+    {
+      $('.contract_date').show();
+      $("#contract_date").attr("required","true");
+      $('.gst_applicable').show();
+      $("#gst_applicable").attr("required","true");
+      
+      //book_date = new Date(book_date);
+       book_date = book_date.split("-");
+      var split_date = book_date[2]+"/"+book_date[1]+"/"+book_date[0];
+      var new_book_date = new Date(split_date);
+     var contract_start_date = new moment(new_book_date, "DD/MM/YYYY").subtract(7, 'days');
+ 
+      $("#contract_date").datepicker({
+       endDate:new_book_date,
+       startDate: contract_start_date.format('DD/MM/YYYY'),
+       autoclose: true,
+       format: 'dd/mm/yyyy',
+      })
+      $('#contract_date').datepicker('setDate', new_book_date);
+	  $('#contract_date').on('show', function(e){
+		if ( e.date ) { $(this).data('stickyDate', e.date); }
+		else { $(this).data('stickyDate', null); }
+	  }).on('hide', function(e){
+		var stickyDate = $(this).data('stickyDate');
+		if ( !e.date && stickyDate ) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+	  });
+    }
+    else
+    {
+      $('.contract_date').hide();
+      $("#contract_date").prop("required",false);
+      $('.gst_applicable').hide();
+      $("#gst_applicable").prop("required",false);
+      $("#gst_applicable").val("");
+      $("#gst_applicable").selectpicker("refresh");
+       $("#contract_date").val("");
+
+    }
+  }
+
+
+	var selected_site = [];
+	function selected_site_string(select_count){
+		if($("#selected_site_"+select_count).prop("checked") == true){
+			selected_site.push($("#selected_site_"+select_count).val());
+		}
+		else{
+			selected_site = removeArrayElement(selected_site, $("#selected_site_"+select_count).val());
+		}
+		//alert('length: ' + selected_site.length + '\n' + selected_site);
+		if(selected_site.length > 0){
+			$("#extend_sites_buttons_div").show();
+		}
+		else{
+			$("#extend_sites_buttons_div").hide();
+		}
+		//var selected_unique_site = selected_site.filter(arrayUnique);
+		//alert('unique length: ' + selected_unique_site.length + '\n' + selected_unique_site);
+	}
+	
+	$("#select_all").click(function () {
+		selected_site = [];
+		var checked = this.checked;
+		table.column(0).nodes().to$().each(function(index) {
+			if (checked) {
+				$(this).find('.site_list').each(function() {
+					$(this).prop('checked', true);
+					selected_site.push($(this).val());
+				});
+			} else {
+				 $(this).find('.site_list').removeProp('checked');
+			}
+		});    
+		table.draw();
+		if(selected_site.length > 0){
+			$("#extend_sites_buttons_div").show();
+		}
+		else{
+			$("#extend_sites_buttons_div").hide();
+		}
+	});
+	
+	function redirectExtend(type){
+		var selected_site_str = '';
+		if(type == 'selected_site'){
+			selected_site_str = '&parent_selected_site=' + window.btoa(selected_site.filter(arrayUnique));
+		}
+		window.location.href = 'availability_status.html?parent_booking_id=' + parent_booking_id + selected_site_str;
+	}
+	function redirectInvoice(){
+	var booking_id = getParameterByName('booking_id');
+	window.location.href = 'invoice_manage.html?id=' + booking_id;
+	}
+	function PopulateClient(selected) {
+		//var dt = new Date();
+		$.ajax({
+			type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			url:  "handler/ajax_availability_status.php",
+			data :{ action_type: 'CLIENT' },
+			dataType: 'json', // what type of data do we expect back from the server
+			encode: true,
+			async: false
+		})
+		// using the done promise callback
+		.done(function(data) {
+			//var resultHTML = '<option value="">State</option>';
+			var resultHTML = '';
+			if (data.status) {
+				resultHTML +='<option value="">Select Client</option>';
+				$.each(data.client_list, function(key, value) {
+					var selected_txt = '';
+					if(selected && selected == value.client_id){
+						selected_txt = ' selected="selected"';
+					}
+					resultHTML += '<option value="' + value.client_id + '"' + selected_txt + '>' + value.client_name + '</option>';
+				});
+			} else {
+				resultHTML = '<option value=""">No Records Available</option>';
+			}
+			$("#client").html(resultHTML);
+			$('#client').selectpicker('refresh');
+			$("#client_id").html(resultHTML);
+			$('#client_id').selectpicker('refresh');
+			/*.on('change', function(){
+			
+				
+				var selected = $(this).val();
+				alert(selected);
+			})*/; 
+			//$('#district_id').selectpicker('refresh');
+			// log data to the console so we can see
+			console.log(data);
+		})
+		// using the fail promise callback
+		.fail(function(data) {
+			// show any errors
+			// best to remove for production
+			console.log(data);
+		});
+	}
+	function populatecomapny(selected){
+		$.ajax({
+			type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			url:  "handler/ajax_availability_status.php",
+			data :{ action_type: 'COMPANY' },
+			dataType: 'json', // what type of data do we expect back from the server
+			encode: true,
+			async: false
+		})
+		// using the done promise callback
+		.done(function(data) {
+			//var resultHTML = '<option value="">State</option>';
+			var resultHTML = '';
+			if (data.status) {
+				resultHTML +='<option value="">Select Company</option>';
+				$.each(data.company_list, function(key, value) {
+					var selected_txt = '';
+					if(selected && selected == value.company_id){
+						selected_txt = ' selected="selected"';
+					}
+					resultHTML += '<option value="' + value.company_id + '"' + selected_txt + '>' + value.company_name + '</option>';
+				});
+			} else {
+				resultHTML = '<option value=""">No Records Available</option>';
+			}
+			$("#company").html(resultHTML);
+			$('#company').selectpicker('refresh');
+			console.log(data);
+		})
+		// using the fail promise callback
+		.fail(function(data) {
+			// show any errors
+			// best to remove for production
+			console.log(data);
+		});
+	}
+	
+	function getBookedBy(selected) {
+		$.ajax({
+			type 		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			//url 		: "handler/ajax_user_master.php",
+			url 		: "handler/ajax_booking.php",
+			//data 		: { action_type: 'USER_DROPDOWN' }, // our data object
+			data 		: { action_type: 'USER' }, // our data object
+			dataType 	: 'json', // what type of data do we expect back from the server
+			encode 		: true
+		})
+		// using the done promise callback
+		.done(function(data) {
+			var resultHTML ='<option value="">Select Booked By</option>';
+			if(data.status){
+				$.each(data.user_list, function(key, value){
+					resultHTML+= '<option value="' + value.user_id + '" data-subtext="' + value.user_name + '">' + value.name + '</option>';
+				});
+			}
+			else{
+				resultHTML = '<option value="" disabled="true">No User Available</option>';
+			}
+			$("#booked_by").html(resultHTML);
+			if(selected){$("#booked_by").val(selected);}
+			else{$("#booked_by").val(data.logged_user_id);}
+			$('#booked_by').selectpicker('refresh');
+			// log data to the console so we can see
+			console.log(data);
+		})
+		// using the fail promise callback
+		.fail(function(data) {
+			// show any errors
+			// best to remove for production
+			console.log(data);
+		});
+	}
+	
+	$.fn.serializeObject = function() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+	
+	$("#booking_edit_frm").submit(function(event){
+		event.preventDefault();
+     $("#contract_sign").removeAttr("disabled");
+      $("#gst_applicable").removeAttr("disabled");
+       $("#contract_date").removeAttr("disabled");
+       $("#po_generated").removeAttr("disabled");
+		//var formData = $("#booking_edit_frm").serializeArray();
+		var formData = new FormData(this);
+    $(this).prop("disabled",true);
+		$.ajax({
+			 type: 'POST',
+			 url: 'handler/ajax_availability_status.php?action_type=EDIT_BOOKING',
+			 data: formData,
+			 dataType: 'json',
+			processData: false,		//	required for FormData object
+			contentType : false
+		})   
+		.done(function(data) {
+			console.log(data);
+			var resulthtml = '';
+			if(data.status){
+				resulthtml = '<div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>Successfully Updated!</div>';
+			}
+			else{
+				resulthtml = '<div class="alert alert-danger alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>Unable to Update!</div>';
+			}
+			$('#show_msg').html(resulthtml);
+			//return;
+			setTimeout(function() { window.location.reload(true); $(this).prop("disabled",false); }, 3000);
+		})
+		// using the fail promise callback
+		.fail(function(data) {
+			// show any errors
+			// best to remove for production
+      $(this).prop("disabled",false);
+			console.log(data);
+		});
+  }) 
+ function check_date(){
+		var from_date=$(".billing_from").text();
+		var to_date=$(".billing_to").text();
+		var billing_from=$("#billing_from").val();
+		var billing_to=$("#billing_to").val();
+		
+		var frm_date_yr=from_date.substring(6,10);
+		var frm_date_month=from_date.substring(3, 5);
+		var frm_date_day=from_date.substring(0,2);
+		var frm_yyyy_mm_dd=frm_date_yr +'-'+ frm_date_month +'-'+ frm_date_day;
+		
+		var to_date_yr=to_date.substring(6,10);
+		var to_date_month=to_date.substring(3, 5);
+		var to_date_day=to_date.substring(0,2);
+		var to_yyyy_mm_dd = to_date_yr +'-'+ to_date_month +'-'+ to_date_day;
+		
+		var billing_frm_yr=billing_from.substring(6,10);
+		var billing_frm_month=billing_from.substring(3, 5);
+		var billing_frm_day=billing_from.substring(0,2);
+		var billing_frm_yyyy_mm_dd = billing_frm_yr +'-'+ billing_frm_month +'-'+ billing_frm_day;
+		
+		var billing_to_yr=billing_to.substring(6,10);
+		var billing_to_month=billing_to.substring(3, 5);
+		var billing_to_day=billing_to.substring(0,2);
+		var billing_to_yyyy_mm_dd = billing_to_yr +'-'+ billing_to_month +'-'+ billing_to_day;
+		
+		//alert(new Date(billing_frm_yyyy_mm_dd));
+		if(new Date(billing_frm_yyyy_mm_dd) > new Date(billing_to_yyyy_mm_dd)){
+			alert('Please check Your Billing Dates');
+			$("#billing_to").val('');
+		}
+	}
+	
+	$('#mail_confirmation_flag').change(function(){
+		var mail_confirmation_flag = $(this).val();
+		if(mail_confirmation_flag == "1"){
+			$("#mail_confirmation_div").show();
+			$("#mail_confirmation_date").attr("required", "required");
+		}
+		else{
+			$("#mail_confirmation_div").hide();
+			$("#mail_confirmation_date").removeAttr("required");
+			$("#mail_confirmation_date").val("");
+		}
+	});
+	
+	$("#mail_confirmation_date").datepicker({
+       format: 'dd/mm/yyyy',
+       autoclose: true,
+       endDate: new Date()
+    });
+	$('#mail_confirmation_date').on('show', function(e){
+		if ( e.date ) { $(this).data('stickyDate', e.date); }
+		else { $(this).data('stickyDate', null); }
+	}).on('hide', function(e){
+		var stickyDate = $(this).data('stickyDate');
+		if ( !e.date && stickyDate ) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+	});
+</script>
+</body>
+</html>	

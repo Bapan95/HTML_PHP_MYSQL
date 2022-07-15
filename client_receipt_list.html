@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <link href="js/bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+    <style>
+        label.input-custom-file input[type=file] {
+            display: none;
+        }
+
+        .mdl-button {
+            text-transform: none;
+        }
+
+        /* jquery.Jcrop.min.css v0.9.12 (build:20130126) */
+        .jcrop-holder {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .jcrop-vline,
+        .jcrop-hline {
+            background: #FFF url(Jcrop.gif);
+            font-size: 0;
+            position: absolute;
+        }
+
+        .jcrop-vline {
+            height: 100%;
+            width: 1px !important;
+        }
+
+        .jcrop-vline.right {
+            right: 0;
+        }
+
+        .jcrop-hline {
+            height: 1px !important;
+            width: 100%;
+        }
+
+        .jcrop-hline.bottom {
+            bottom: 0;
+        }
+
+        .jcrop-tracker {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .jcrop-handle {
+            background-color: #333;
+            border: 1px #EEE solid;
+            font-size: 1px;
+            height: 7px;
+            width: 7px;
+        }
+
+        .jcrop-handle.ord-n {
+            left: 50%;
+            margin-left: -4px;
+            margin-top: -4px;
+            top: 0;
+        }
+
+        .jcrop-handle.ord-s {
+            bottom: 0;
+            left: 50%;
+            margin-bottom: -4px;
+            margin-left: -4px;
+        }
+
+        .jcrop-handle.ord-e {
+            margin-right: -4px;
+            margin-top: -4px;
+            right: 0;
+            top: 50%;
+        }
+
+        .jcrop-handle.ord-w {
+            left: 0;
+            margin-left: -4px;
+            margin-top: -4px;
+            top: 50%;
+        }
+
+        .jcrop-handle.ord-nw {
+            left: 0;
+            margin-left: -4px;
+            margin-top: -4px;
+            top: 0;
+        }
+
+        .jcrop-handle.ord-ne {
+            margin-right: -4px;
+            margin-top: -4px;
+            right: 0;
+            top: 0;
+        }
+
+        .jcrop-handle.ord-se {
+            bottom: 0;
+            margin-bottom: -4px;
+            margin-right: -4px;
+            right: 0;
+        }
+
+        .jcrop-handle.ord-sw {
+            bottom: 0;
+            left: 0;
+            margin-bottom: -4px;
+            margin-left: -4px;
+        }
+
+        .jcrop-dragbar.ord-n,
+        .jcrop-dragbar.ord-s {
+            height: 7px;
+            width: 100%;
+        }
+
+        .jcrop-dragbar.ord-e,
+        .jcrop-dragbar.ord-w {
+            height: 100%;
+            width: 7px;
+        }
+
+        .jcrop-dragbar.ord-n {
+            margin-top: -4px;
+        }
+
+        .jcrop-dragbar.ord-s {
+            bottom: 0;
+            margin-bottom: -4px;
+        }
+
+        .jcrop-dragbar.ord-e {
+            margin-right: -4px;
+            right: 0;
+        }
+
+        .jcrop-dragbar.ord-w {
+            margin-left: -4px;
+        }
+
+        .jcrop-light .jcrop-vline,
+        .jcrop-light .jcrop-hline {
+            background: #FFF;
+            filter: alpha(opacity=70) !important;
+            opacity: .70 !important;
+        }
+
+        .jcrop-light .jcrop-handle {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background-color: #000;
+            border-color: #FFF;
+            border-radius: 3px;
+        }
+
+        .jcrop-dark .jcrop-vline,
+        .jcrop-dark .jcrop-hline {
+            background: #000;
+            filter: alpha(opacity=70) !important;
+            opacity: .7 !important;
+        }
+
+        .jcrop-dark .jcrop-handle {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background-color: #FFF;
+            border-color: #000;
+            border-radius: 3px;
+        }
+
+        .solid-line .jcrop-vline,
+        .solid-line .jcrop-hline {
+            background: #FFF;
+        }
+
+        .jcrop-holder img,
+        img.jcrop-preview {
+            max-width: none;
+        }
+
+        .multiselect-container .checkbox {
+            margin: 0;
+        }
+
+        .multiselect-container .input-group {
+            margin: 0;
+        }
+
+        .custom_select .bootstrap-select {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>user();</script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>footer();</script>
+    <section class="content">
+        <div class="container-fluid">
+            <!--<div class="block-header">
+                     </div>-->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div style="min-height: 520px;  padding-bottom: 20px;" class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="pull-right" id="back_btn"></div>
+                                    <h2>Client Receipt Register</h2>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span id="list_buttons_div"></span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="clearfix">
+
+                                <form id="form1" name="frm_add_edit" class="formEditDataTemplateField" action=""
+                                    autocomplete="off">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line focused-cus" id="set">
+                                                    <label class="form-label">Payment From <span
+                                                            class="aster">*</span></label>
+                                                    <input type="text" id="from_date" class="form-control date1"
+                                                        name="from_date" required="">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <div class="form-group form-float" id="set">
+                                                <div class="form-line focused-cus">
+                                                    <label class="form-label">To <span class="aster">*</span></label>
+                                                    <input type="text" name="to_date" id="to_date"
+                                                        class="form-control date2" required="">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label" for="client">Select Client <span
+                                                            class="aster">*</span></label>
+                                                    <select class="form-control" id="client" name="client"
+                                                        data-live-search="true">
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="col-sm-3">
+          <div class="form-group form-float">
+               <div class="form-line focused-cus">
+                <label class="form-label" for="user_id">Select User</label>
+                   <select class="form-control" id="user_id" name="user_id" data-live-search="true">
+                   
+                    </select>
+                    
+                  </div>
+               </div>
+            </div> -->
+
+                                        <div class="col-sm-1">
+                                            <div class="form-group form-float">
+                                                <button type="submit" id="search_button"
+                                                    class="btn btn-primary m_top20 edit_in_menu">Search</button>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <div class="form-group form-float">
+
+                                                <button
+                                                    class="btn bg-green waves-effect btn-md action_btn m_top20 download_class"
+                                                    type="submit" id="download_excel"> <i class="fa fa-download"></i>
+                                                    Download Excel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                                <div class="row">
+
+                                    <div class="table-responsive">
+
+                                        <table id="mytable"
+                                            class="table table-bordered table-striped table-hover js-exportable dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Receipt Number</th>
+                                                    <th>Receipt Date</th>
+                                                    <th>Cheque Date</th>
+                                                    <th>Client Name</th>
+                                                    <th>Total Amount</th>
+                                                    <!-- <th>TDS Percentage</th>
+                                <th>TDS Amount</th>
+                                <th>After TDS Amount</th>-->
+                                                    <th>Action</th>
+
+
+
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="payment_table">
+
+
+                                            </tbody>
+                                            <tfoot id="footer_table">
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+
+    <!-- Select Plugin Js -->
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <!-- script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+
+
+    <script>
+        var date = new Date();
+        var start_date = new Date(date.getFullYear(), date.getMonth(), 1);
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+        $('#from_date').datepicker({
+            format: 'dd/mm/yyyy',
+            // Highlight: true,
+
+            autoclose: true,
+        });
+
+        $('#to_date').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+        });
+
+
+
+        $('#from_date').datepicker('setDate', start_date);
+        $('#to_date').datepicker('setDate', today);
+
+
+
+
+
+        function checkdate() {
+            var diff = 0;
+            $('#to_date').datepicker({
+                format: 'dd/mm/yyyy',
+                //todayHighlight: false,
+                //startDate: selected_from_date,
+                autoclose: true
+            });
+            d1 = jQuery('#from_date').datepicker('getDate');
+            d2 = jQuery('#to_date').datepicker('getDate');
+            d1 = new Date(d1);
+            d2 = new Date(d2);
+            //var diff = 1;
+
+
+            diff = (+diff) + (Math.floor((d2.getTime() - d1.getTime()) / 86400000));
+
+
+
+            if (diff < 0) {
+                $('#to_date').datepicker('setDate', d1);
+            }
+
+        }
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            // user_access();
+            populatedata();
+            getclient();
+        });
+
+
+        function getclient() {
+
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_availability_status.php",
+                data: { action_type: 'CLIENT' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    //var resultHTML = '<option value="">State</option>';
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select Client</option>';
+                        $.each(data.client_list, function (key, value) {
+                            resultHTML += '<option value="' + value.client_id + '">' + value.client_name + '</option>';
+                        });
+                    }
+                    else {
+                        resultHTML = '<option value=""">No Records Available</option>';
+                    }
+                    $("#client").html(resultHTML);
+                    $('#client').selectpicker('refresh');
+
+
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+
+        }
+        function populatedata() {
+            var d1 = $("#from_date").val();
+            var d2 = $("#to_date").val();
+            if (d1 != "" && d2 != "") {
+                var from_date = $("#from_date").val();
+                var to_date = $("#to_date").val();
+            }
+            else {
+                var date = new Date();
+                var start_date = new Date(date.getFullYear(), date.getMonth(), 1);
+                var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+                $('#from_date').datepicker({
+                    format: 'dd/mm/yyyy',
+                    // Highlight: true,
+
+                    autoclose: true,
+                });
+
+                $('#to_date').datepicker({
+                    format: 'dd/mm/yyyy',
+                    autoclose: true,
+                });
+
+
+
+                $('#from_date').datepicker('setDate', start_date);
+                $('#to_date').datepicker('setDate', today);
+                var from_date = $("#from_date").val();
+                var to_date = $("#to_date").val();
+            }
+            var client = $("#client").val();
+            // var status =$("#status").val();
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_payment_detail.php",
+                data: { from_date: from_date, to_date: to_date, client: client, action_type: 'RECEIPT_LIST', ref_type: 'VIEW' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                .done(function (data) {
+                    var resultHTML = "";
+                    var resultFOOT = " ";
+                    var i = "";
+                    var vendor_det = "";
+                    var amount = 0;
+                    var tds_pct = 0;
+                    var tds_amt = 0;
+                    var payment_amt = 0;
+                    if (data.status) {
+                        $.each(data.payment_list, function (key, value) {
+
+
+                            i++;
+                            amount = ((amount * 1) + (value.amount * 1)) * 1;
+                            tds_pct = ((tds_pct * 1) + (value.tds_pct * 1)) * 1;
+                            tds_amt = ((tds_amt * 1) + (value.tds_amt * 1)) * 1;
+                            payment_amt = ((payment_amt * 1) + (value.payment_amt * 1)) * 1;
+
+                            resultHTML += '<tr class="det_emp">';
+                            resultHTML += '<td>' + i + '</td>';
+                            resultHTML += '<td>' + value.receipt_no + '</td>';
+                            resultHTML += '<td>' + value.payment_date + '</td>';
+                            resultHTML += '<td>' + value.date + '</td>';
+                            resultHTML += '<td>' + value.client_name + '</td>';
+                            resultHTML += '<td align="right">' + value.amount + '</td>';
+                            /*resultHTML += '<td align="right">' + value.tds_pct + '</td>';
+                            resultHTML += '<td align="right">' + value.tds_amt + '</td>';
+                            resultHTML += '<td align="right">' + value.payment_amt + '</td>';*/
+                            resultHTML += '<td><button type="button" class="btn btn-sm btn-primary  waves-effect" onclick="print_recipt_payment_voucher(' + value.received_id + ')">Print</button>&nbsp&nbsp<button type="button"  class="btn btn-sm btn-primary  waves-effect" onclick="edit_recipt_payment_voucher(' + value.received_id + ')"><i class="fa fa-edit"></i></button></td>';
+
+
+
+
+                            resultHTML += '</tr>';
+
+                        })
+
+                        //}
+                        resultFOOT += '<tr>';
+
+                        resultFOOT += '<td> </td>';
+                        resultFOOT += '<td> </td>';
+                        resultFOOT += '<td style="text-align:center">Total</td>';
+                        resultFOOT += '<td> </td>';
+                        resultFOOT += '<td style="text-align:right">' + amount.toFixed(2) + ' </td>';
+                        //resultFOOT += '<td style="text-align:right">' + tds_pct.toFixed(2) + ' </td>';
+                        //resultFOOT += '<td style="text-align:right">' + tds_amt.toFixed(2) + ' </td>';
+                        //resultFOOT += '<td style="text-align:right">' + payment_amt.toFixed(2) + ' </td>';
+                        resultFOOT += '</tr>';
+                    }
+                    $("#mytable").dataTable().fnDestroy();
+                    $('#payment_table').html(resultHTML);
+                    $('#footer_table').html(resultFOOT);
+                    $('#mytable').DataTable();
+
+                })
+        }
+
+
+        $("#form1").submit(function (event) {
+            event.preventDefault();
+            $('#payment_table').html("");
+            populatedata();
+        })
+
+        $("#download_excel").click(function (event) {
+            event.preventDefault();
+
+            var from_date = $("#from_date").val();
+            var to_date = $("#to_date").val();
+            var client = $("#client").val();
+            //alert(client);
+            // var user_id = $("#user_id").val();  
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_payment_detail.php",
+                data: { from_date: from_date, to_date: to_date, client: client, action_type: 'RECEIPT_LIST', ref_type: 'DWNLD' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    console.log(data);
+
+                    if (data.status) {
+                        //window.location.href = "../available-sites/" + data.file_name;
+                        var $a = $("<a>");
+                        $a.attr("href", data.file);
+                        $a.attr("target", "_blank");
+                        $a.text("Download Excel");
+                        $("#list_buttons_div").append($a);
+                        //var file_name=data.file_name;
+                        $a.attr("download", data.file_name + ".xlsx");
+                        $a[0].click();
+                        $a.remove();
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+        });
+
+        function print_recipt_payment_voucher(received_id) {
+            window.open("print_money_receipt.html?received_id=" + received_id);
+        }
+
+        function edit_recipt_payment_voucher(received_id) {
+            // window.open("edit_money_receipt.html?received_id=" + received_id);
+            window.location.href = "edit_money_receipt.html?received_id=" + received_id;
+        }
+    </script>
+</body>
+
+</html>

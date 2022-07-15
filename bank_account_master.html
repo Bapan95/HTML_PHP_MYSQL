@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <title></title>
+        <!-- Favicon-->
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+            rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        <!-- Bootstrap Core Css -->
+        <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+        <!-- Waves Effect Css -->
+        <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+        <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+        <!-- Animation Css -->
+        <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+        <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+        <!-- Bootstrap Material Datetime Picker Css -->
+
+
+        <!-- Custom Css -->
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/responsive.css" rel="stylesheet">
+
+        <script src="js/nav.js"></script>
+        <script src="js/common-functions.js"></script>
+
+    </head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>
+        user();
+
+    </script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>
+        footer();
+
+    </script>
+    <section class="content content30" id="user_permission_acc_content">
+        <div class="container-fluid">
+            <!--<div class="block-header">
+                <h2>DASHBOARD</h2> </div>-->
+            <!-- Widgets -->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Bank Account List</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 text-right">
+                                    <button href="#" type="button"
+                                        class="btn btn-primary waves-effect add_button_user_per" data-toggle="modal"
+                                        data-target="#add_bank_account" onclick="refresh_all()"><i
+                                            class="material-icons">add</i>Add Bank A/C.</button>
+
+
+                                    <!-- <span id="list_buttons_div" class="p_left15 js-sweetalert">
+								<button class="btn bg-green waves-effect  action_btn pull-right download_class" type="submit" id="download_excel"> <i class="fa fa-download"></i> Download Excel</button>
+                                </span> -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table id="mytable"
+                                        class="table table-bordered table-striped table-hover js-exportable dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Bank Account No.</th>
+                                                <th style="text-align:center;">IFSC No.</th>
+                                                <th style="text-align:center;">Branch Name</th>
+                                                <th style="text-align:center;">Bank Name</th>
+                                                <th style="text-align:center;">Owned Company</th>
+                                                <th style="text-align:center;" align="center">Status</th>
+                                                <th style="text-align:center;" align="center">Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="getresult">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Sub Category Modal -->
+    <div class="modal fade" id="add_bank_account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content card">
+                <div class="header bg-blue-grey">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title"><span id="add_edit_msg"></span> Bank Account</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="show_msg"></div>
+                    <form id="sub_category_form" method="POST" data-validate="parsley" name="frm_add_edit"
+                        class="formEditDataTemplateField" action="" autocomplete="off">
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label">Account No. <span class="aster">*</span></label>
+                                        <input type="text" class="form-control" id="bank_account" name="bank_account"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label">IFSC <span class="aster">*</span></label>
+                                        <input type="text" class="form-control" id="ifsc_no" name="ifsc_no" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus"><label for="state" class="form-label">Select Bank
+                                            <span class="aster">*</span></label>
+                                        <select id="bank_id" name="bank_id" data-live-search="true"
+                                            onchange="myFunction(this.value);" class="form-control show-tick"
+                                            required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label">Branch Name <span class="aster">*</span></label>
+                                        <input type="text" class="form-control" id="branch_name" name="branch_name"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label">Address <span class="aster">*</span></label>
+                                        <textarea class="form-control" id="branch_address" name="branch_address"
+                                            required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus"><label for="state" class="form-label">Owned
+                                            Company <span class="aster">*</span></label>
+                                        <select id="company_id" name="company_id" data-live-search="true"
+                                            class="form-control show-tick" required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <input type="hidden" id="bank_account_id" name="bank_account_id" value="" />
+
+                        <div class="row">
+                            <div class="col-sm-3 offset-sm-4">
+                                <div class="form-group">
+                                    <button id="add_edit_account" name="add_record" type="submit" value="Add project"
+                                        class="btn btn-primary btn-block btn-lg text-uppercase">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- # Add Sub Category Modal -->
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <!--   <script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+    <!-- <script src="assets/js/pages/tables/jquery-datatable.js"></script>-->
+    <script>
+        var bank_account_id = getParameterByName('bank_account_id');
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            user_access();
+            populatedata();
+            get_bank_list();
+            // alert("aritra");
+        });
+    </script>
+
+    <script>
+        function refresh_all() {
+            $("#add_edit_msg").text('Add');
+            document.getElementById("sub_category_form").reset();
+            $("#super_categories").selectpicker('refresh');
+            $("#categories").selectpicker('refresh');
+            $("#id_method").selectpicker('refresh');
+            $("#subcat_id").val("");
+            populatecomapny();
+        }
+        function myFunction() {
+            window.print();
+        }
+        function populatedata() {
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_bank_account_master.php',
+                data: { action_type: 'BANK_ACC_LIST' },
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    var resultHTML = '';
+                    var i = 0;
+                    if (data.status) {
+                        $.each(data.bank_list, function (key, value) {
+                            i++;
+                            resultHTML += '<tr>';
+                            resultHTML += '<td align="center">' + value.account_no + '</td>';
+                            resultHTML += '<td align="center">' + value.ifsc_no + '</td>';
+                            resultHTML += '<td align="center">' + value.branch_name + '</td>';
+                            resultHTML += '<td align="center">' + value.bank_name + '</td>';
+                            resultHTML += '<td align="center">' + value.company_name + '</td>';
+
+                            resultHTML += '<td align="center">';
+                            if (value.is_active == 1) {
+                                resultHTML +=
+                                    '<button type="button" class="btn btn-sm btn-success waves-effect edit_in_menu" data-toggle="modal"  onclick="inactive(' +
+                                    value.bank_account_id +
+                                    ')"><i class="material-icons">done</i></button>';
+                            } else {
+                                resultHTML +=
+                                    '<button type="button" class="btn btn-sm btn-danger waves-effect edit_in_menu" data-toggle="modal" onclick="active(' +
+                                    value.bank_account_id +
+                                    ')"><i class="material-icons">clear</i></button>';
+                            }
+                            resultHTML += '</td>';
+                            resultHTML +=
+                                '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-info waves-effect edit_in_menu" data-toggle="modal" onclick="get_sub_category(' +
+                                value.bank_account_id +
+                                ')"><i class="material-icons">edit</i></button></td>';
+                            resultHTML += '</tr>';
+                        });
+
+                        $("#getresult").html(resultHTML);
+                        $("#mytable").DataTable();
+
+
+                    }
+                })
+        }
+
+        // Deactivate Sub Category
+        function inactive(bank_account_id) {
+            if (confirm('Do you want to Deactivate this?')) {
+                $.ajax({
+                    type: "POST",
+                    url: "handler/ajax_bank_account_master.php?bank_account_id=" + bank_account_id,
+                    data: {
+                        action_type: 'DEACTIVATE_SUB_CATEGORY'
+                    },
+                    success: function (result) {
+                        window.location.href = VPATH + 'sub_category_master.html';
+                    }
+                })
+            }
+
+        }
+
+        // Activate Sub Categeroy
+        function active(bank_account_id) {
+            if (confirm('Do you want to Activate this?')) {
+                $.ajax({
+                    type: "POST",
+                    url: "handler/ajax_bank_account_master.php?bank_account_id=" + bank_account_id,
+                    data: {
+                        action_type: 'ACTIVATE_SUB_CATEGORY'
+                    },
+                    success: function (result) {
+                        window.location.href = VPATH + 'sub_category_master.html';
+                    }
+                })
+            }
+        }
+
+        // Get Categories 
+        function get_bank_list() {
+            //alert(1);
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_bank_account_master.php",
+                data: { bank_account_id: bank_account_id, action_type: 'LIST_ALL_BANK' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var other_payment_bank_id = '';
+                    $.each(data.bank_list_id, function (key, value) {
+                        // alert(value.bank_name);
+                        other_payment_bank_id = value.bank_id;
+                    });
+
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select Bank </option>';
+                        $.each(data.bank_list, function (key, value) {
+                            var d = (value.bank_id == other_payment_bank_id) ? 'selected' : '';
+
+                            // alert(value.bank_name);
+                            resultHTML += '<option value="' + value.bank_id + '" ' + d + '>' + value.bank_name + '</option>';
+                        });
+                    }
+                    else {
+                        resultHTML = '<option value="">No Records Available</option>';
+                    }
+                    $("#bank_id").html(resultHTML);
+                    // $("#bank_name").val(resultHTML);
+                    $("#bank_id").selectpicker('refresh');
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+
+
+        // Edit Sub Category
+        function get_sub_category(bank_account_id) {
+
+            $('#add_bank_account').modal('show');
+
+            $("#add_edit_msg").text('Edit');
+            var modal = $('#add_bank_account');
+            modal.find('.form-line').addClass('focused');
+
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_bank_account_master.php',
+                data: { bank_account_id: bank_account_id, action_type: 'UPDATE_SUB_CATEGORY_DATA' },
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    if (data.status) {
+                        //   alert(data.sub_category_data.bank_account_id);
+                        // set hidden field
+                        $("#bank_account_id").val(data.bank_account_data.bank_account_id);
+
+                        // set form fields
+                        $("#bank_account").val(data.bank_account_data.account_no);
+                        $("#ifsc_no").val(data.bank_account_data.ifsc_no);
+                        $("#branch_name").val(data.bank_account_data.branch_name);
+                        $("#branch_address").val(data.bank_account_data.branch_address);
+                        populatecomapny(data.bank_account_data.company_id);
+
+                        $("#bank_id").val(data.bank_account_data.bank_id);
+                        $("#bank_id").selectpicker('refresh');
+
+                    }
+
+                    $('#add_bank_account').modal('show');
+                })
+        }
+
+        function populatecomapny(selected) {
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_availability_status.php",
+                data: { action_type: 'COMPANY' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    //var resultHTML = '<option value="">State</option>';
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select Company</option>';
+                        $.each(data.company_list, function (key, value) {
+                            var selected_txt = '';
+                            if (selected && selected == value.company_id) {
+                                selected_txt = ' selected="selected"';
+                            }
+                            resultHTML += '<option value="' + value.company_id + '"' + selected_txt + '>' + value.company_name + '</option>';
+                        });
+                    } else {
+                        resultHTML = '<option value=""">No Records Available</option>';
+                    }
+                    $("#company_id").html(resultHTML);
+                    $('#company_id').selectpicker('refresh');
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+        }
+        // Add New Sub Category
+        $("#sub_category_form").submit(function (event) {
+            event.preventDefault();
+            $("#add_edit_account").prop('disabled', true);
+
+            var frmData = $("#sub_category_form").serializeArray();
+            //console.log(frmData); return;
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_bank_account_master.php?action_type=NEW_BANK_ACCOUNT',
+                data: frmData,
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    console.log(data);
+                    var msg = data.message;
+                    if (data.id == 0) {
+                        resulthtml +=
+                            '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' +
+                            data.message + '</div>';
+                        $('#show_msg').html(resulthtml);
+                        $("#add_edit_account").prop('disabled', false);
+                    } else {
+                        if (data.id == 2) {
+                            msg = "Successfully Updated";
+                        }
+                        if (data.id == 1) {
+                            msg = "Successfully Inserted";
+                        }
+                        var resulthtml = '';
+                        resulthtml +=
+                            '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' +
+                            data.message + '</div>';
+                        $('#show_msg').append(resulthtml);
+                        var href = "bank_account_master.html";
+                        setTimeout(function () {
+                            window.location.href = href;
+                            $("#add_edit_account").prop('disabled', false);
+                        }, 2000);
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    $("#add_edit_account").prop('disabled', false);
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+        })
+
+
+        function myFunction() {
+            var bank_id = document.getElementById("bank_id").value;
+            //  alert(bank_id);
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_bank_account_master.php",
+                data: { bank_id: bank_id, action_type: 'BRANCH' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var resultHTML = '';
+                    // $("#bank_head_office_address").val(data.receipt_details.bank_id);
+                    // alert(data.receipt_details.bank_id);
+
+                    if (data.status) {
+                        //resultHTML += '<span>bank_head_office_address</span>';
+                        $.each(data.branch_list, function (key, value) {
+                            // alert(data.branch_list);
+                            resultHTML = '' + value.branch + '';
+                            // alert(resultHTML);
+
+                        });
+                    }
+                    else {
+                        resultHTML = '<span>No Records Available</span>';
+                    }
+                    $("#branch_name").val(resultHTML);
+
+                    $("#branch_name").selectpicker('refresh');
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

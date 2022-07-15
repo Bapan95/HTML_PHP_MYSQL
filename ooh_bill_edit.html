@@ -1,0 +1,542 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Signatures Booking Invoice</title>
+    <style type="text/css">
+        body {
+            /* background-image: url(SAPL-Bill-Sample.jpg);*/
+            background-repeat: no-repeat;
+            background-position: top center;
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+
+        .alert {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            padding: 10px 0px;
+            background: #00dd63;
+            width: 33%;
+        }
+
+        .close {
+            background: #fff;
+            padding: 0px 2px;
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            border: none;
+            background: #0093dc;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+    </style>
+
+    <script src="js/common-functions.js"></script>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <script src="js/bootstrap-datepicker.js"></script>
+</head>
+
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row noprint">
+            <div class="col-sm-3">
+                <div id="back_div">
+                    <a href="" id="backbtn" class="btn btn-sm btn-primary waves-effect"
+                        style="background-color: #6B1D49; background-image: none;cursor: pointer; font-size: 18px; padding:6px 25px; margin-top:15px; margin-left:15px; color:#fff; border:none; border-radius:5px; float: right;text-decoration: none; display:none;">Back</a>
+                </div>
+            </div>
+        </div>
+        <div>
+
+            <!-- End Page Loader -->
+            <form id="form_validation1" method="POST">
+                <div id="show_msg"></div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td height="10"></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;" align="left" valign="top">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="62%" align="left" valign="top"
+                                        style="padding-left:15px;font-size:15px; font-family:Arial, sans-serif;">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td width="74%" align="left" valign="top" style="padding:10px">
+                                                    <p style="margin:0; padding:0;"><img src="assets/images/logo.jpg"
+                                                            width="225" height="86" alt="" /></p>
+                                                    <p style="margin:0;">&nbsp;</p>
+                                                    <p style="margin:0;"><b>Regd. Office :</b> </p>
+                                                    <p style="margin:0;">3/33, Brojomoni Debya Road Flat-D, 3rd Floor,
+                                                    </p>
+                                                    <p style="margin:0;">Kolkata - 700 061</p>
+                                                    <p style="margin:0;">&nbsp;</p>
+                                                    <p style="margin:0;"><b>Correspondence Address :</b> </p>
+                                                    <p style="margin:0;">783, D.H. Road, Kolkata - 700008. </p>
+                                                    <p style="margin:0;"><b>Ph :</b> (033) 2447 3472 / (+91) 933 102
+                                                        1671</p>
+                                                    <p style="margin:0;">&nbsp;</p>
+                                                    <p style="margin:0;"><b>PAN No. :</b> AAXCS1759E / <b>GSTIN :</b>
+                                                        19AAXCS1759E1ZQ</p>
+                                                    <p style="margin:0;"><b>CIN NO. :</b> U74999WB2016 PTC 215681</p>
+                                                    <p style="margin:0;"><b>PLACE OF SUPPLY :</b> WEST BENGAL / <b>STATE
+                                                            CODE :</b> 19</p>
+                                                    <p style="margin:0;"><b>E-mail :</b>
+                                                        signature.advertising15@gmail.com</p>
+                                                    <p style="margin:0;"><b>MSME No. :</b> WB18F0027702</p>
+                                                </td>
+                                                <td width="26%" align="left" valign="top"
+                                                    style="padding-top:10px;font-size: 20px; font-family:Arial, sans-serif;">
+                                                    <strong><u><span id="inv_type"></span></u></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" align="left" valign="top"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="38%" align="left" valign="top"
+                                        style="padding-left:15px;font-size:15px; font-family:Arial, sans-serif;">
+                                        <table>
+                                            <tr>
+                                                <td width="30%" height="108" align="left" valign="top"
+                                                    style="margin:0;">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%" align="left" valign="top" style="margin:0;">
+                                                    <p style="margin:0;"><b>Invoice No :</b> <input type="text"
+                                                            name="invoice_no" id="invoice_no" readonly /> </p>
+                                                    <p style="margin-top:0;"><b>Date :</b> <input type="text"
+                                                            name="invoice_date" id="invoice_date" /></p>
+                                                    <p style="margin:0;"><b>Order No :</b> <input type="text"
+                                                            name="po_no" id="po_no" /></p>
+                                                    <p style="margin-top:0;"><b>Email dated :</b> <input type="text"
+                                                            name="email_date" id="email_date" /></p>
+                                                    <p style="margin-top:0;"><b>Campaign Name : </b><span
+                                                            id="campaign_name"></span></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%" align="left" valign="top" style="margin:0;">
+                                                    <p style="margin:0;"><b>Buyer&rsquo;s Name : <span id="cust_name"
+                                                                style="color:#0585CF;"></span></b></p>
+                                                    <p style="margin:0;"><b>Address : </b><span
+                                                            id="cust_address"></span></p>
+                                                    <p style="margin:0;"><b>GSTIN : </b><span id="cust_gstin"></span>
+                                                    </p>
+                                                    <p style="margin:0;"><b>Customer's PAN No. : </b><span
+                                                            id="cust_pan"></span> &nbsp; <b>State Code : </b><span
+                                                            id="cust_state"></span></p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left" valign="top" style="font-size:14px; font-family:Arial, sans-serif;">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="invoice_info_table">
+                                <tr>
+                                    <td width="5%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">SL No.</td>
+                                    <td width="52%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">Description
+                                    </td>
+                                    <td width="9%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">SAC/HSN</td>
+                                    <td width="8%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">Size</td>
+                                    <td colspan="2" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td colspan="2" align="center" valign="middle"
+                                                    style="border-bottom:1px solid #000;">Period</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" valign="middle" width="53%">From</td>
+                                                <td align="center" valign="middle" width="47%"
+                                                    style="border-left:1px solid #000;">To</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="4%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">Qty</td>
+                                    <td width="7%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;">Space
+                                        <br />Charges Rate
+                                    </td>
+                                    <td width="6%" align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000;">
+                                        Amount</td>
+
+                                </tr>
+                                <tr>
+                                    <td align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;padding:10px;">
+                                    </td>
+                                    <td align="left" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;padding:10px;">
+                                        <b>To,
+                                            Being the charges of space for Advertisement on
+                                            <br />Billboards/Hoarding/Gantry/Double-Decker/Metro
+                                            Pillar/Pole-kiosk/Signal/Signage/Mobile Van at</b>
+                                    </td>
+                                    <td align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;"><b
+                                            id="hsn_sac_no">9983</b></td>
+                                    <td align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;"></td>
+                                    <td align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;"></td>
+                                    <td align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;"
+                                        id="invoice_from"></td>
+                                    <td align="center" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;"
+                                        id="invoice_to"></td>
+                                    <td align="right" valign="middle"
+                                        style="border-left:1px solid #000; border-bottom:1px solid #000;padding-right:10px;">
+                                    </td>
+                                    <td align="right" valign="middle"
+                                        style="border-left:1px solid #000;border-right:1px solid #000; border-bottom:1px solid #000;padding-right:10px;">
+                                    </td>
+                                </tr>
+
+
+                                <tbody id="invoice_info_body">
+
+                                    <tr>
+
+                                </tbody>
+
+                    </tr>
+                    <input type="hidden" name="action_type" id="action_type" value="">
+                    <input type="hidden" name="hidden_invoice_id" id="hidden_invoice_id" value="">
+
+
+
+                </table>
+                </td>
+                </tr>
+                <tr>
+                    <td height="20"></td>
+                </tr>
+                </table>
+
+                <div class="col-md-12 col-sm-12">
+                    <button class="btn btn-primary waves-effect" id="edit_approval_status" type="submit"
+                        align="l">SUBMIT</button>
+                </div>
+                <form>
+                    <script>
+
+                        var invoice_id = getParameterByName('invoice_id');
+
+
+                        $(document).ready(function () {
+                            //getAppName();
+                            //isLogin();  
+                            if (!invoice_id) {
+                                alert("Invalid request.");
+                                redirect_to();
+                                return;
+                            }
+                            //$("#backbtn").attr('href','invoice_manage.html?id='+booking_id);
+                            generate_bill(invoice_id);
+
+                            //// date
+                            var date = new Date();
+                            var invoice_date = new Date(date.getFullYear(), date.getMonth(), 1);
+                            var email_date = new Date(date.getFullYear(), date.getMonth(), 1);
+
+                            $('#invoice_date').datepicker({
+                                format: 'dd-mm-yyyy',
+                                Highlight: true,
+
+                                autoclose: true,
+
+                            });
+
+                            $('#email_date').datepicker({
+                                format: 'dd-mm-yyyy',
+                                Highlight: true,
+
+                                autoclose: true,
+
+                            });
+                            // var start_date = new Date(date.getFullYear(), date.getMonth(), 1);
+                            // var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+                            // $('#invoice_date').datepicker({
+                            //     format: 'dd-mm-yyyy',
+                            //     // Highlight: true,
+
+                            //     autoclose: true,
+                            // });
+
+                            // $('#email_date').datepicker({
+                            //     format: 'dd-mm-yyyy',
+                            //     autoclose: true,
+                            // });
+
+
+
+                            // $('#invoice_date').datepicker('setDate', start_date);
+                            // $('#email_date').datepicker('setDate', today);
+                            //$('#invoice_date').datepicker('setDate', invoice_date);		
+                            //$('#email_date').datepicker('setDate', email_date);		
+                        });
+
+
+
+                        function myFunction() {
+                            window.print();
+                        }
+
+
+                        function generate_bill(invoice_id) {
+                            var maxRow = 20;
+                            $.ajax({
+                                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                                url: "handler/ajax_final_bill.php",
+                                data: { invoice_id: invoice_id, action_type: 'ooh_bill' },	//final_bill
+                                dataType: 'json', // what type of data do we expect back from the server
+                                encode: true,
+                                async: false
+                            })
+                                // using the done promise callback
+                                .done(function (data) {
+                                    console.log(data);
+
+
+                                    var total_day_amount = 0;
+                                    var total_month_amount = 0;
+
+                                    var resultHTML = ''; var i = 0;
+                                    var po_generated_flag = '';
+                                    var mail_confirmation_flag = '';
+                                    var rent_applicable_flag = '';
+                                    var full_address = '';
+                                    var aft_dis_amt = 0;
+                                    if (data.status) {
+                                        //full_address=data.booking_info.company_name+'<br>'+data.booking_info.address+'<br>'+data.booking_info.village_town+'-'+data.booking_info.pin_code;
+                                        $("#backbtn").attr('href', 'ooh_bill.html?invoice_id=' + invoice_id);
+                                        $("#backbtn").show();
+                                        if (data.booking_info.po_no) {
+                                            $("#po_no").val(data.booking_info.po_no);
+                                        }
+                                        else {
+                                            $("#po_no").val(data.booking_info.po_number);
+                                        }
+                                        /*if(data.booking_info.email_date && data.booking_info.email_date != '00/00/0000'){
+                                        //alert(data.booking_info.email_date);
+                                        //	$("#email_date").text(data.booking_info.email_date);
+                                            //$('#email_date').datepicker('setDate', email_date);
+                                        }
+                                        else if(data.booking_info.mail_confirmation_date != '00/00/0000'){*/
+                                        $("#email_date").val(data.booking_info.email_date);
+                                        //}
+                                        $("#cust_name").text(data.booking_info.client_name);
+
+                                        if (data.booking_info.inv_type == 'T') {
+
+                                            $("#inv_type").text('Tax Invoice Edit');
+                                        }
+                                        if (data.booking_info.inv_type == 'E') {
+
+                                            $("#inv_type").text('Estimate');
+                                        }
+
+                                        $("#cust_address").text(data.booking_info.client_address);
+                                        $("#gstin").text(data.booking_info.gstin);
+                                        $("#cust_gstin").text(data.booking_info.cust_gstin);
+                                        $("#cust_pan").text(data.booking_info.cust_pan);
+                                        $("#cust_state").text(data.booking_info.cust_state_code);
+                                        $("#gross_amt").text(data.booking_info.gross_amount);
+                                        $("#amount").text(data.booking_info.net_amount);
+
+
+                                        $("#accno").text(data.booking_info.account_no);
+                                        $("#ifsc").text(data.booking_info.ifsc_no);
+                                        $("#bank_nm").text(data.booking_info.bank_name);
+                                        $("#branch_nm").text(data.booking_info.branch_name);
+                                        $("#branch_address").html(data.booking_info.branch_address);
+                                        $("#campaign_name").text(data.booking_info.brand_name);
+
+                                        if (data.booking_info.discount_percent > 0) {
+                                            $("#dis_per").text(data.booking_info.discount_percent);
+                                            $("#discout_amt").hide();
+                                        }
+                                        else {
+                                            $("#dis_amt").text(data.booking_info.discount_amount);
+                                            $("#discout_per").hide();
+                                        }
+
+                                        if (data.booking_info.igst_percent > 0) {
+                                            $("#igst_percent").text(data.booking_info.igst_percent);
+                                            $("#igst_amount").text(data.booking_info.igst_amount);
+                                            $("#cgst_row").hide();
+                                            $("#sgst_row").hide();
+                                        }
+                                        else {
+                                            $("#cgst_percent").text(data.booking_info.cgst_percent);
+                                            $("#cgst_amount").text(data.booking_info.cgst_amount);
+                                            $("#sgst_percent").text(data.booking_info.sgst_percent);
+                                            $("#sgst_amount").text(data.booking_info.sgst_amount);
+                                            $("#igst_row").hide();
+                                        }
+                                        $("#hsn_sac_no").text(data.booking_info.hsn_sac_no);
+                                        //$("#invoice_from").text(data.booking_info.invoice_from);
+                                        //$("#invoice_to").text(data.booking_info.invoice_to);
+                                        $("#invoice_no").val(data.booking_info.invoice_no);
+                                        $("title").text("Booking Invoice: " + data.booking_info.invoice_no);
+                                        $("#invoice_date").val(data.booking_info.invoice_date);
+                                        //$("#final_amount").text(data.booking_info.payable_amount);
+
+                                        var grand_value = data.booking_info.payable_amount;
+
+                                        var grand_value_round = Math.round(grand_value);
+                                        var cal_round_off = ((grand_value_round - grand_value) * 1).toFixed(2);
+                                        $("#final_amount").text(grand_value_round.toFixed(2));
+                                        $("#round_off").text(cal_round_off);
+
+                                        var word = convert_into_words_from_rupee(grand_value_round);
+                                        $("#word").text(word);
+
+                                        var is_extended = data.booking_info.is_extended;
+                                        var tmp_booking_no = '';
+
+                                        $.each(data.booking_detail, function (key, value) {
+                                            //alert(value.site_name);
+                                            i++;
+                                            resultHTML += '<tr>';
+                                            resultHTML += ' <td align="center" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;padding:10px;">' + i + '</td> ';
+                                            resultHTML += '<td align="left" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;padding:10px;"><input type="hidden"  name="invoice_detail_id[]" value="' + value.invoice_detail_id + '"><input type="text" name="site_name[]" style="width: 100%;" id="site_name_' + i + '" value="' + value.site_name + '"></td>';
+                                            resultHTML += '<input type="hidden"  name="site_id[]" value="' + value.site_id + '">';
+                                            //resultHTML += '<td align="left" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;padding:10px;"><input type="text" style="width: 100%;" name="site_name[]" id="site_name_'+i+'" value="' + value.site_psudo_name + '"></td>';
+                                            resultHTML += ' <td align="center" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;"></td>';
+                                            resultHTML += ' <td align="center" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;">' + value.width + '&apos; X ' + value.height + '&apos;</td>';
+                                            resultHTML += ' <td width="9%" align="center" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;">' + value.invoice_from + '</td> ';
+                                            resultHTML += ' <td width="8%" align="center" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;">' + value.invoice_to + '</td>';
+                                            resultHTML += ' <td align="center" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;">' + value.quantity + '</td>';
+                                            resultHTML += ' <td align="right" valign="middle" style="border-left:1px solid #000; border-bottom:1px solid #000;padding-left:10px;padding-right:10px;">' + parseFloat(value.rate / value.quantity).toFixed(2) + '</td>';
+                                            resultHTML += '<td align="right" valign="middle" style="border-left:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000;padding-left:10px; padding-right:10px;">' + value.final_rate + '</td>';
+                                            resultHTML += '</tr>';
+                                        });
+                                        if ((i % maxRow) > 0) {
+                                            var height = 30 * (maxRow - (i % maxRow));
+                                            resultHTML += '<tr><td colspan="9" height="" align="right" style="border-left:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000;">&nbsp;</td></tr>';
+                                        }
+
+                                    }
+                                    else {
+                                        resultHTML = '<td colspan="9">No Booking Available</td>';
+                                    }
+
+                                    $('#invoice_info_body').html(resultHTML);
+                                })
+                                // using the fail promise callback
+                                .fail(function (data) {
+                                    // show any errors
+                                    // best to remove for production
+                                    console.log(data);
+                                });
+
+                        }
+
+                        $("#form_validation1").submit(function (event) {
+                            event.preventDefault();
+
+                            $("#hidden_invoice_id").val(invoice_id);
+                            //$("#edit_approval_status").prop('disabled', true);
+
+                            var date = $("#action_date").val();
+                            // alert(date); 
+
+                            $("#action_type").val("Edit_OHH_invoice");
+                            var senData = $("#form_validation1").serializeArray();
+                            senData.push({ name: "action_date", value: date });
+
+                            $.ajax({
+                                type: 'POST',
+                                url: 'handler/ajax_edit_inv.php',
+                                data: senData,
+                                dataType: 'json',
+                                encode: true,
+                            })
+                                .done(function (data) {
+                                    //alert('Partha');
+                                    var msg = '';
+                                    var resulthtml = '';
+                                    //alert(data.id);
+                                    if (data.id == 1) {
+                                        msg = "Successfully Updated ! ";
+                                    }
+                                    resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                                    $('#show_msg').append(resulthtml);
+                                    scrollToDiv('show_msg');
+                                    var href = "client_report.html";
+                                    setTimeout(function () {
+                                        window.location.href = "../ooh_bill.html?invoice_id=" + invoice_id;
+                                    }, 2000);
+
+                                })
+                                // using the fail promise callback
+                                .fail(function (data) {
+                                    $("#edit_approval_status").prop('disabled', false);
+                                    // show any errors
+                                    // best to remove for production
+                                    console.log(data);
+                                });
+
+
+
+                        })
+                    </script>
+</body>
+
+</html>

@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <link href="js/bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+    <style>
+        label.input-custom-file input[type=file] {
+            display: none;
+        }
+
+        .mdl-button {
+            text-transform: none;
+        }
+
+        /* jquery.Jcrop.min.css v0.9.12 (build:20130126) */
+        .jcrop-holder {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .jcrop-vline,
+        .jcrop-hline {
+            background: #FFF url(Jcrop.gif);
+            font-size: 0;
+            position: absolute;
+        }
+
+        .jcrop-vline {
+            height: 100%;
+            width: 1px !important;
+        }
+
+        .jcrop-vline.right {
+            right: 0;
+        }
+
+        .jcrop-hline {
+            height: 1px !important;
+            width: 100%;
+        }
+
+        .jcrop-hline.bottom {
+            bottom: 0;
+        }
+
+        .jcrop-tracker {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .jcrop-handle {
+            background-color: #333;
+            border: 1px #EEE solid;
+            font-size: 1px;
+            height: 7px;
+            width: 7px;
+        }
+
+        .jcrop-handle.ord-n {
+            left: 50%;
+            margin-left: -4px;
+            margin-top: -4px;
+            top: 0;
+        }
+
+        .jcrop-handle.ord-s {
+            bottom: 0;
+            left: 50%;
+            margin-bottom: -4px;
+            margin-left: -4px;
+        }
+
+        .jcrop-handle.ord-e {
+            margin-right: -4px;
+            margin-top: -4px;
+            right: 0;
+            top: 50%;
+        }
+
+        .jcrop-handle.ord-w {
+            left: 0;
+            margin-left: -4px;
+            margin-top: -4px;
+            top: 50%;
+        }
+
+        .jcrop-handle.ord-nw {
+            left: 0;
+            margin-left: -4px;
+            margin-top: -4px;
+            top: 0;
+        }
+
+        .jcrop-handle.ord-ne {
+            margin-right: -4px;
+            margin-top: -4px;
+            right: 0;
+            top: 0;
+        }
+
+        .jcrop-handle.ord-se {
+            bottom: 0;
+            margin-bottom: -4px;
+            margin-right: -4px;
+            right: 0;
+        }
+
+        .jcrop-handle.ord-sw {
+            bottom: 0;
+            left: 0;
+            margin-bottom: -4px;
+            margin-left: -4px;
+        }
+
+        .jcrop-dragbar.ord-n,
+        .jcrop-dragbar.ord-s {
+            height: 7px;
+            width: 100%;
+        }
+
+        .jcrop-dragbar.ord-e,
+        .jcrop-dragbar.ord-w {
+            height: 100%;
+            width: 7px;
+        }
+
+        .jcrop-dragbar.ord-n {
+            margin-top: -4px;
+        }
+
+        .jcrop-dragbar.ord-s {
+            bottom: 0;
+            margin-bottom: -4px;
+        }
+
+        .jcrop-dragbar.ord-e {
+            margin-right: -4px;
+            right: 0;
+        }
+
+        .jcrop-dragbar.ord-w {
+            margin-left: -4px;
+        }
+
+        .jcrop-light .jcrop-vline,
+        .jcrop-light .jcrop-hline {
+            background: #FFF;
+            filter: alpha(opacity=70) !important;
+            opacity: .70 !important;
+        }
+
+        .jcrop-light .jcrop-handle {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background-color: #000;
+            border-color: #FFF;
+            border-radius: 3px;
+        }
+
+        .jcrop-dark .jcrop-vline,
+        .jcrop-dark .jcrop-hline {
+            background: #000;
+            filter: alpha(opacity=70) !important;
+            opacity: .7 !important;
+        }
+
+        .jcrop-dark .jcrop-handle {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background-color: #FFF;
+            border-color: #000;
+            border-radius: 3px;
+        }
+
+        .solid-line .jcrop-vline,
+        .solid-line .jcrop-hline {
+            background: #FFF;
+        }
+
+        .jcrop-holder img,
+        img.jcrop-preview {
+            max-width: none;
+        }
+
+        .multiselect-container .checkbox {
+            margin: 0;
+        }
+
+        .multiselect-container .input-group {
+            margin: 0;
+        }
+
+        .custom_select .bootstrap-select {
+            display: none;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 1000;
+        }
+
+        details summary::before {
+            content: "►";
+            margin-right: 0px;
+        }
+
+        details summary::before {
+            -webkit-content: "";
+        }
+
+        details[open] summary::before {
+            content: "▼" margin-right: 0px;
+        }
+
+        details[open] summary::before {
+            -webkit-content: ""
+        }
+
+        summary::webkit-details-maker {
+            display: none;
+        }
+
+        summary {
+            width: 0px;
+            float: left;
+            padding-top: 6px;
+            white-space: nowrap;
+            display: block;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) and (min-width: 768px) {
+            details summary::before {
+                content: "";
+            }
+
+            details[open] summary::before {
+                content: ""
+            }
+
+            summary::-webkit-details-marker {
+                float: left;
+                margin-top: 5px;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>user();</script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>footer();</script>
+    <section class="content">
+        <div class="container-fluid">
+            <!--<div class="block-header">
+                <h2>DASHBOARD</h2> </div>-->
+            <!-- Widgets -->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Client Receipt Entry </h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 text-right">
+                                    <a class="btn btn-md btn-primary m_left10" href="client_receipt_list.html">Receipt
+                                        List</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="show_msg"></div>
+
+                        <div class="card" id="search_select_form_div">
+                            <div class="body">
+                                <form id="form_payment" name="form_payment" method="POST" autocomplete="off">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3">
+                                            <div class="form-group form-float">
+                                                <div class="form-line focused-cus ">
+                                                    <label class="form-label" for="client_id">Select Client <span
+                                                            class="aster">*</span></label>
+                                                    <select class="form-control" id="client_id" name="client_id"
+                                                        data-live-search="true">
+                                                        <option value="" disabled="true">Client</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <div class="form-group form-float">
+                                                <div class="form-line focused-cus">
+                                                    <label class="form-label">Payment Type</label>
+                                                    <select class="form-control" id="payment_type" name="payment_type">
+                                                        <option value="" disabled="true">Payment Type</option>
+                                                        <!-- <option value="ADV">Advance</option>
+                                                        <option value="ADJ">Adjustment</option> -->
+                                                        <option value="INV">Against Invoice</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <div class="form-group form-float">
+                                                <div class="form-group ">
+                                                    <button type="button" id="search_button"
+                                                        class="btn btn-primary m_top15">Proceed</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="payment_form_div" style="display:none;">
+                                        <!--  -->
+
+                                        <div class="table-responsive" id="unpaid_purchase_div" style="display:none;">
+                                            <table id="unpaid_purchase_table"
+                                                class="table table-bordered table-striped table-hover js-exportable dataTable mydetatable_ajax">
+                                                <thead>
+                                                    <tr>
+                                                        <th align="center" style="text-align:center;"><input
+                                                                type="checkbox" class="form-check-input"
+                                                                name="select_all" id="select_all" value="1" /><label
+                                                                for="select_all">#</label></th>
+                                                        <th align="left" style="text-align:left;">Invoice No.</th>
+                                                        <th align="left" style="text-align:left;">Invoice Date</th>
+                                                        <th align="left" style="text-align:left;">Invoice Amount Before
+                                                            GST</th>
+                                                        <th align="right" style="text-align:right;">Invoice Amount</th>
+                                                        <th align="right" style="text-align:right;">Due Amount</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="unpaid_purchase_list">
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div id="advance_div" style="display:none;">
+                                            <div class="clearfix form-group">
+                                                <details open>
+                                                    <summary>
+                                                        <div class=""><strong>Advance Amount</strong></div>
+                                                    </summary>
+                                                    <div class="col-md-3 col-md-offset-9 text-right"><strong
+                                                            id="advance_amount">0.00</strong></div>
+                                                </details>
+                                            </div>
+                                        </div>
+
+                                        <div class="container-fluid m_top15" id="payment_modes" style="display:none;">
+
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line focused-cus">
+                                                            <label class="form-label" for="payment_date">Payment Date
+                                                                <span class="aster">*</span></label>
+                                                            <input type="text" name="payment_date" id="payment_date"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="form-group form-float">
+                                                        <div class="focused-cus">
+                                                            <label class="form-label">Payment Mode <span
+                                                                    class="aster">*</span></label><br />
+                                                            <input name="payment_mode" id="radio_1" type="radio"
+                                                                class="radio" onclick="electricity_charges_yes()"
+                                                                checked value="Cash">
+                                                            <label for="radio_1">Cash<label>
+                                                                    <input name="payment_mode" id="radio_2" type="radio"
+                                                                        onclick="electricity_charges_no()" value="Bank">
+                                                                    <label for="radio_2">Bank</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line focused-cus">
+                                                            <label class="form-label" for="amount">Amount <span
+                                                                    class="aster">*</span></label>
+                                                            <input type="text" name="amount" onkeyup="real_amount(this)"
+                                                                onblur="real_amount()" id="amount" class="form-control"
+                                                                style="text-align:right;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+
+
+
+                                            <!-- <input type="text" id="show_amount" /> -->
+
+
+                                            <!-- </div> -->
+                                            <div id="charges_no">
+                                                <div class="row clearfix form-group">
+
+                                                    <!-- <summary><div class=""><strong>Bank Transfer</strong></div></summary> -->
+                                                    <div class="col-md-2">
+                                                        <input type="text" name="reference_no" id="reference_no"
+                                                            class="form-control check_group"
+                                                            placeholder="Cheque No or Reference No">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="text" name="date" id="date"
+                                                            class="form-control check_group" placeholder="Date">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="text" name="bank_id" id="bank_id"
+                                                            class="form-control check_group" placeholder="Bank">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" name="branch" id="branch"
+                                                            class="form-control check_group" placeholder="Branch">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" name="account_no" id="account_no"
+                                                            class="form-control check_group" placeholder="account no">
+
+
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+
+                                            <div class="col-md-3 col-sm-3">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line focused-cus">
+                                                        <label class="form-label" for="amount">Total Amount<span
+                                                                class="aster">*</span></label>
+                                                        <input type="text" name="total_amt" id="total_amt"
+                                                            class="form-control" style="text-align:right;">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-3" id="received_Bank">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line focused-cus ">
+                                                        <label class="form-label" for="bank_name">received Bank <span
+                                                                class="aster">*</span></label>
+                                                        <select class="form-control" id="received_bank_id"
+                                                            name="received_bank_id" data-live-search="true">
+                                                            <option value="" disabled="true">select bank</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="tds_div_new" class="row">
+
+
+
+
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line focused-cus">
+                                                            <label class="form-label" for="amount">Realisation
+                                                                Amount<span class="aster">*</span></label>
+                                                            <input type="text" name="payment_amt"
+                                                                onchange="myFunction()" value="0.00" id="payment_amt"
+                                                                class="form-control" style="text-align:right;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div id="tds_div_agt" class="row">
+
+
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line focused-cus">
+                                                            <label class="form-label" for="tds_amt">TDS Amount<span
+                                                                    class="aster">*</span></label>
+                                                            <input type="text" value="0.00" name="tds_amt_agt"
+                                                                onkeyup="real_amount()" onblur="real_amount()"
+                                                                id="tds_amt_agt" class="form-control"
+                                                                style="text-align:right;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line focused-cus">
+                                                            <label class="form-label" for="amount">Realisation
+                                                                Amount<span class="aster">*</span></label>
+                                                            <input type="text" name="payment_amt_agt"
+                                                                onchange="myFunction1()" id="payment_amt_agt"
+                                                                class="form-control" style="text-align:right;" readonly>
+                                                            <input type="hidden" id="due_amount">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="header">
+                                                <div class="row clearfix">
+                                                    <div class="col-xs-12 col-sm-12 align-center js-sweetalert">
+                                                        <button type="submit" class="btn bg-green waves-effect"
+                                                            id="save_btn">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <!-- <script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+    <script src="js/parsleyjs/dist/parsley.js"></script>
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script>
+        $.fn.serializeObject = function () {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+    </script>
+
+    <script>
+        //var event_id = getParameterByName('event_id');
+
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            user_access();
+            populateClient();
+            purchasepulateBank();
+            $("#charges_no").hide();
+            $("#received_Bank").hide();
+            // alert("aritra");
+        });
+
+        $('#date').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $('#payment_date').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            endDate: new Date(),
+            format: 'dd/mm/yyyy'
+        });
+        $('#payment_date').on('show', function (e) {
+            if (e.date) { $(this).data('stickyDate', e.date); }
+            else { $(this).data('stickyDate', null); }
+        }).on('hide', function (e) {
+            var stickyDate = $(this).data('stickyDate');
+            if (!e.date && stickyDate) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+        });
+
+        var client_id, payment_type, bank_name;
+
+        function populateClient(selected) {
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_client_payment.php",
+                data: { action_type: 'CLIENT_LIST' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select Client </option>';
+                        $.each(data.vendor_list, function (key, value) {
+                            resultHTML += '<option value="' + value.client_id + '">' + value.client_name + '</option>';
+                        });
+                    }
+                    else {
+                        resultHTML = '<option value="">No Records Available</option>';
+                    }
+                    $("#client_id").html(resultHTML);
+                    if (selected) {
+                        $("#client_id").val(selected);
+                    }
+                    $("#client_id").selectpicker('refresh');
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+
+
+        function real_amount() {
+            // alert("aritra");
+            amount = $("#amount").val();
+            tds_amt_agt = $("#tds_amt_agt").val();
+            re_amount = amount - tds_amt_agt;
+            $("#payment_amt_agt").val(re_amount.toFixed(2));
+
+        }
+
+        function myFunction() {
+            var amount = 0;
+            var tds_pct = 0;
+            var tds_amt = 0;
+            var payment_amt = 0;
+            // var igst_amount = 0;
+            var pct = 100;
+            var tot_amount = 0;
+
+            tds_amt = $("#tds_amt").val();
+            total_amt = $("#total_amt").val();
+            payment_amt = $("#payment_amt").val();
+            // alert (payment_amt);
+            // tds_pct
+            tds_pct = ((tds_amt * 1) / (total_amt * 1) * pct);
+            tot_amount = (payment_amt - tds_amt) * 1;
+
+            // alert (tds_pct);
+            $("#tds_pct").val(tds_pct.toFixed(3));
+            $("#payment_amt").val(tot_amount.toFixed(2));
+
+            /*amount = $("#amount").val();
+            tds_pct = $("#tds_pct_agt").val();
+           // tds_pct = $("#tds_pct").val();
+           var  advance_amount = $("#advance_amount").text();
+           var  total_amt = $("#total_amt").val();
+           
+            tds_amt = (((total_amt * 1) * (tds_pct * 1)) / (pct * 1));
+            
+            $("#tds_amt_agt").val(tds_amt);
+            //$("#tds_amt").val(tds_amt);
+           
+            
+            payment_amt = ((amount * 1) -  (tds_amt * 1));
+           // alert(tot_amount);
+            $("#payment_amt_agt").val(payment_amt); */
+        }
+
+        function purchasepulateBank() {
+
+            //alert(selected);
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_project_detail.php",
+                data: { action_type: 'Bank' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select Bank </option>';
+                        $.each(data.vendor_list, function (key, value) {
+                            // alert(value.bank_name);
+                            resultHTML += '<option value="' + value.bank_id + '">' + value.bank_name + '</option>';
+                        });
+                    }
+                    else {
+                        resultHTML = '<option value="">No Records Available</option>';
+                    }
+                    $("#received_bank_id").html(resultHTML);
+
+                    $("#received_bank_id").selectpicker('refresh');
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+        var advance_amt = 0;
+
+        $("#search_button").click(function () {
+            client_id = $("#client_id").val();
+            if (!client_id) {
+                alert('Please choose a client to proceed.');
+                return false;
+            }
+
+            payment_type = $("#payment_type").val();
+            advance_amt = 0
+
+            $("#payment_form_div").show();
+            if (payment_type == 'ADV' || payment_type == 'INV') {
+                $("#payment_modes").show();
+                //$("#tds_div_agt").hide();
+                $("#payment_date").prop("required", "true");
+                $("#amount").prop("required", "true");
+                $("#show_amount").prop("required", "true");
+
+            }
+            else {
+                $("#payment_modes").hide();
+                //$("#tds_div_agt").show(); 
+                $("#payment_date").removeAttr("required");
+                $("#amount").removeAttr("required");
+                $("#show_amount").removeAttr("required");
+
+            }
+            if (payment_type == 'INV') {
+                $("#tds_div_agt").show();
+            }
+            else {
+                $("#tds_div_agt").hide();
+            }
+
+            if (payment_type == 'ADJ') {
+                $("#tds_div_new").show();
+            }
+            else {
+                $("#tds_div_new").hide();
+            }
+
+            $("#advance_div").hide();
+            $("#unpaid_purchase_div").hide();
+
+            if (payment_type == 'ADJ') {
+                getClientAdvance();
+            }
+
+            if (payment_type == 'ADJ' || payment_type == 'INV') {
+                getClientUnpaidInvoice();
+            }
+
+            return;
+
+        });
+
+        function getClientAdvance() {
+
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_vendor_payment.php",
+                data: { action_type: 'GET_CLIENT_ADVANCE', client_id: client_id },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    console.log(data);
+                    if (data.status) {
+                        $("#advance_div").show();
+                        advance_amt = parseFloat(data.adv_row.advance_amt).toFixed(2);
+                        $("#advance_amount").text(advance_amt);
+
+                    }
+                    else {
+                        advance_amt = 0;
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+
+        function getClientUnpaidInvoice() {
+            $("#sms_bar").hide();
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_vendor_payment.php",
+                data: { action_type: 'get_client_unpaid_invoice', client_id: client_id },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    var resultHTML = '';
+                    if (data.status) {
+                        var i = 1;
+                        $.each(data.purchase_list, function (key, value) {
+                            resultHTML += '<tr>';
+                            resultHTML += '  <td style="text-align:center;" align="center">';
+                            resultHTML += '		<input type="checkbox" class="form-check-input purchase_list" name="selected_invoice[]" id="selected_invoice_' + i + '" value="' + value.invoice_id + '-' + value.invoice_type + '" data-position="' + i + '" onclick="select_purchase_string(' + i + ')"/><label for="selected_invoice_' + i + '">&nbsp;</label>';
+                            resultHTML += '		<input type="hidden" id="due_amount_' + i + '" value="' + value.due_amount + '"/>';
+                            resultHTML += '  </td>';
+                            resultHTML += '  <td>' + value.invoice_no + '</td>';
+                            resultHTML += '  <td>' + value.invoice_date + '</td>';
+                            resultHTML += '		<input type="hidden" id="net_amount_' + i + '" value="' + value.net_amount + '"/>';
+                            resultHTML += '  <td style="text-align:right;" align="right">' + value.net_amount + '</td>';
+                            resultHTML += '  <td style="text-align:right;" align="right">' + value.payable_amount + '</td>';
+                            resultHTML += '  <td style="text-align:right;" align="right">' + parseFloat(value.due_amount).toFixed(2) + '</td>';
+                            resultHTML += '</tr>';
+                            i++;
+
+
+                        });
+                    }
+                    else {
+                        resultHTML += '<tr><td colspan="5" style="text-align:center;" align="center">No record available</td></tr>';
+                    }
+                    //$("#unpaid_purchase_list").dataTable().fnDestroy();
+                    $("#unpaid_purchase_list").html(resultHTML);
+                    $("#unpaid_purchase_div").show();
+
+                    //table = $('#unpaid_po_table').DataTable();
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+        }
+
+
+
+        var total_amount = 0;
+        var tds_percent = 0;
+        var tds_value = 0;
+        var net_amount = 0;
+        var balance_left = 0;
+
+
+        function electricity_charges_no() {
+            //$("#charges_yes_no").hide();
+            $("#charges_no").show();
+            $("#received_Bank").show();
+
+        }
+
+        function electricity_charges_yes() {
+            //$("#charges_yes_no").show();
+            $("#charges_no").hide();
+            $("#received_Bank").hide();
+        }
+
+
+        $("#tds_percent").keyup(setTDS);
+        function setTDS() {
+            tds_percent = ($("#tds_percent").val() * 1);
+            if (isNaN(tds_percent)) {
+                tds_percent = 0;
+                alert('Invalid percentage value');
+                $("#tds_percent").val("");
+            }
+            else if (tds_percent < 0) {
+                alert('Invalid percentage value');
+                $("#tds_percent").val("");
+                tds_percent = 0;
+            }
+            else if (tds_percent > 100) {
+                alert('TDS percentage is too high!');
+                $("#tds_percent").val(0);
+                tds_percent = 0;
+            }
+            calculateTDS();
+        }
+
+
+
+        var selected_invoice = [];
+        var due_amount = [];
+        var selected_invoice_amount = 0;
+        var selected_due_amount = 0;
+
+
+        function select_purchase_string(select_count) {
+
+
+            selected_invoice_amount = 0;
+            $(".purchase_list").each(function () {
+                if ($(this).prop("checked")) {
+                    selected_invoice_amount = (selected_invoice_amount * 1 + $("#net_amount_" + $(this).data("position")).val() * 1);
+                }
+            });
+
+            //alert('total selectec invoice ' + selected_invoice_amount);
+
+            selected_due_amount = 0;
+            $(".purchase_list").each(function () {
+                if ($(this).prop("checked")) {
+                    selected_due_amount = (selected_due_amount * 1 + $("#due_amount_" + $(this).data("position")).val() * 1);
+                }
+            });
+            $("#amount").val(selected_due_amount);
+            $("#payment_amt_agt").val(selected_due_amount);
+            $("#due_amount").val(selected_due_amount);
+            //alert('total selectec invoice Due amount' + selected_due_amount);
+
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_vendor_payment.php",
+                data: { action_type: 'GET_CLIENT_ADVANCE', client_id: client_id },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    console.log(data);
+                    if (data.status) {
+                        //$("#advance_div").show();
+                        advance_amt = parseFloat(data.adv_row.advance_amt).toFixed(2);
+                        $("#advance_amount").text(advance_amt);
+
+
+
+
+                        if (selected_invoice_amount > advance_amt) {
+                            //$("#submit_div").hide();
+                            //alert('You can not proceed');
+                            //alert(advance_amt);
+
+                            //$("#submit_div").hide();
+                            //$("#sms_bar").show();
+                            var pct = 100;
+                            //alert(selected_invoice_amount);
+                            tds_pct = $("#tds_pct").val();
+                            tds_amt = (((advance_amt * 1) * (tds_pct * 1)) / (pct * 1));
+                            //var tds_amt_new= advance_amt  + (tds_amt * 1);
+                            $("#tds_amt").val(tds_amt);
+                            payment_amt = ((advance_amt * 1) - (tds_amt * 1));
+                            //alert(tds_pct);
+                            $("#payment_amt").val(selected_due_amount);
+                            $("#total_amt").val(selected_invoice_amount);
+
+                        }
+                        else {
+                            var pct = 100;
+                            //$("#submit_div").show();
+                            //$("#sms_bar").hide();
+                            //alert(selected_invoice_amount);
+                            tds_pct = $("#tds_pct").val();
+                            tds_amt = (((selected_invoice_amount * 1) * (tds_pct * 1)) / (pct * 1));
+                            //alert(tds_amt);
+                            $("#tds_amt").val(tds_amt);
+                            payment_amt = ((selected_due_amount * 1) - (tds_amt * 1));
+                            //alert(tds_pct);
+                            $("#payment_amt").val(payment_amt);
+                            $("#total_amt").val(selected_invoice_amount);
+                            // $("#total_amt").val(selected_due_amount);
+                        }
+                    }
+                    else {
+                        advance_amt = 0;
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    console.log(data);
+                });
+
+
+
+
+            /*
+            // value = due_amount.push($("#due_amount_"+select_count).val()); 
+             var value = $("#due_amount_"+select_count).val();
+                 alert(value);
+             
+                //var sum = [value].reduce((a, b) => a + b, 0);
+            	
+                alert(sum);
+                */
+            if ($("#selected_invoice_" + select_count).prop("checked") == true) {
+                selected_invoice.push($("#selected_invoice_" + select_count).val());
+                //$("#count_selected").text(selected_po.length);
+            }
+            else {
+                selected_invoice = removeArrayElement(selected_invoice, $("#selected_invoice_" + select_count).val());
+                //$("#count_selected").text(selected_po.length);
+            }
+            //alert(selected_po);
+
+        }
+
+
+
+
+        $("#select_all").click(function () {
+            selected_invoice = [];
+            if ($(this).prop("checked")) {
+                $(".purchase_list").each(function () {
+                    $(this).prop("checked", true);
+                    selected_invoice.push($(this).val());
+                });
+            }
+            else {
+                $(".purchase_list").each(function () {
+                    $(this).prop("checked", false);
+                });
+            }
+        });
+
+        $("#form_payment").submit(function (event) {
+            event.preventDefault();
+            isValidated = true;
+            payment_type = $("#payment_type").val();
+            if (payment_type == 'ADJ' || payment_type == 'INV') {
+                if (selected_invoice.length == 0) {
+                    isValidated = false;
+                    alert("Please select an Invoice");
+                }
+            }
+            if (payment_type == 'ADJ') {
+                if (advance_amt == 0) {
+                    isValidated = false;
+                    alert("There is no advance amount to adjust");
+                }
+            }
+            if (!isValidated) {
+                return;
+            }
+            insert_flag = 0;
+            // if (due_amount < value) {
+            //     alert("amount should not greater than due amount");
+            //     insert_flag=1
+            //     $("#save_btn").selectpicker('refresh');
+
+            // alert(insert_flag);
+            var value = $("#amount").val();
+            var due_amount = $("#due_amount").val();
+            // alert(due_amount); alert(value);
+            if (due_amount < value) {
+                alert("amount should not greater than due amount");
+                insert_flag = 1
+                $("#save_btn").selectpicker('refresh');
+            } else {
+                $("#save_btn").attr('disabled', 'disabled');
+                $.ajax({
+                    type: 'POST',
+                    url: "handler/ajax_client_payment.php?action_type=MAKE_PAYMENT",
+                    data: new FormData(this),
+                    dataType: 'json',
+                    encode: true,
+                    contentType: false,
+                    processData: false
+                })
+                    .done(function (data) {
+                        console.log(data);
+                        console.log(insert_flag);
+
+                        $("#save_btn").removeAttr('disabled');
+                        $('html,body').animate({ scrollTop: 0 }, 'slow');
+                        if (data.status) {
+                            var resulthtml = '<div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a> ' + data.msg + '</div>';
+                            $('#show_msg').html(resulthtml);
+                            setTimeout(function () { window.location.reload(true); }, 3000);
+                        }
+                        else {
+                            var resulthtml = '<div class="alert alert-danger alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a> ' + data.msg + '</div>';
+                            $('#show_msg').html(resulthtml);
+                            setTimeout(function () { window.location.reload(true); }, 3000);
+                        }
+                    })
+                    .fail(function (data) {
+                        console.log(data);
+                        $("#save_btn").removeAttr('disabled');
+                    });
+            }
+        });
+
+        $('#payment_type').on('change', function () {
+            var payment_type = this.value;
+            if (payment_type == "INV") {
+                $(".div_ajax_hide_show").show();
+            }
+            else {
+                $(".div_ajax_hide_show").hide();
+            }
+        })
+
+    </script>
+</body>
+
+</html>

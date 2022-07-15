@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <link href="js/bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>user();</script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>footer();</script>
+    <section class="content content30" id="user_permission_acc_content">
+        <div class="container-fluid">
+            <!--<div class="block-header">
+                 </div>-->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Invoice Register</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right js-sweetalert">
+
+                                    <!-- <div id="list_buttons_div">
+                 <div class="form-group form-float">
+              <button  class="btn bg-green waves-effect action_btn pull-right m_left15 download_class" type="submit" id="download_excel"> <i class="material-icons">file_download</i>Download Excel</button>
+              </div>
+              </div> -->
+                                    <div id="list_buttons_div_srch">
+                                        <div class="form-group form-float">
+                                            <button
+                                                class="btn bg-green waves-effect action_btn pull-right download_class"
+                                                type="submit" id="download_excel_srch"> <i
+                                                    class="material-icons">file_download</i> Download Excel</button>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="body">
+                            <form method="post" id="form1" name="frm_add_edit" class="formEditDataTemplateField"
+                                action="" autocomplete="off">
+                                <input type="hidden" id="action_type" name="action_type">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3">
+                                        <div class="form-group form-float">
+                                            <div class="form-line focused" id="set">
+                                                <input type="text" id="from_date" class="form-control date1"
+                                                    name="from_date" required="">
+                                                <label class="form-label">Invoice From</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3">
+                                        <div class="form-group form-float" id="set">
+                                            <div class="form-line focused">
+                                                <input type="text" name="to_date" id="to_date"
+                                                    class="form-control date2" required="">
+                                                <label class="form-label">To</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+
+                                                <select class="form-control" id="vendor" name="vendor"
+                                                    data-live-search="true">
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group form-float">
+                                            <div class="form-line"><select id="inv" name="inv">
+                                                    <option value="">Select Type</option>
+                                                    <option value="booking">Booking Invoice</option>
+                                                    <option value="mounting">Mounting Invoice</option>
+                                                    <option value="printing">Printing Invoice</option>
+                                                    <option value="manual">Manual Invoice</option>
+                                                    <option value="all">All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- <div class="col-sm-2">
+      <div class="form-group form-float">
+           <div class="form-line">
+             
+               <select class="form-control" id="user" name="user" data-live-search="true" >
+                
+                </select>
+                
+              </div>
+           </div>
+        </div> -->
+                                    <div class="col-sm-1">
+                                        <div class="form-group form-float">
+                                            <div class="form-group ">
+
+                                                <button id="search_button"
+                                                    class="btn btn-primary m_top15">Search</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+
+
+                            <div style="overflow-x: scroll; overflow-y: hidden;">
+                                <table id="cancel_table"
+                                    class="table table-bordered table-striped table-hover js-exportable dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Invoice No</th>
+                                            <th>Invoice Date</th>
+                                            <th>Invoice Type</th>
+                                            <th>Booking No</th>
+                                            <th>Company Name</th>
+                                            <th>Client Name</th>
+                                            <th>Gross Amount</th>
+                                            <th>Total Discount</th>
+                                            <th>After Discount</th>
+                                            <th>CGST Percentage</th>
+                                            <th>CGST Amount</th>
+                                            <th>SGST Percentage</th>
+                                            <th>SGST Amount</th>
+                                            <th>IGST Percentage</th>
+                                            <th>IGST Amount</th>
+                                            <th>Net Amount</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="cancel_booking_table">
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+
+                                            <td id="gross_total" align="right"></td>
+                                            <td id="discount_amount" align="right"></td>
+                                            <td id="net_amount" align="right"></td>
+
+                                            <td></td>
+                                            <td id="cgst_amount" align="right"></td>
+                                            <td></td>
+                                            <td id="sgst_amount" align="right"></td>
+                                            <td></td>
+                                            <td id="igst_amount" align="right"></td>
+                                            <td id="payable_amount" align="right"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <!--  <script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            // user_access();
+            PopulatecancelList();
+            getclient();
+            getuser();
+            var date = new Date();
+            var start_date = new Date(date.getFullYear(), date.getMonth(), 1);
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+            $('#from_date').datepicker({
+                format: 'dd-mm-yyyy',
+                // Highlight: true,
+
+                autoclose: true,
+            });
+
+            $('#to_date').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+            });
+
+
+
+            $('#from_date').datepicker('setDate', start_date);
+            $('#to_date').datepicker('setDate', today);
+
+
+
+
+        });
+        function getclient() {
+
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_availability_status.php",
+                data: { action_type: 'COMPANY' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    //var resultHTML = '<option value="">State</option>';
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select Company</option>';
+                        $.each(data.company_list, function (key, value) {
+                            resultHTML += '<option value="' + value.company_id + '">' + value.company_name + '</option>';
+                        });
+                    } else {
+                        resultHTML = '<option value=""">No Records Available</option>';
+                    }
+                    $("#vendor").html(resultHTML);
+                    $('#vendor').selectpicker('refresh');
+
+
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+
+        }
+
+        function getuser() {
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_booking.php",
+                data: { action_type: 'USER' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    //var resultHTML = '<option value="">State</option>';
+                    var resultHTML = '';
+                    if (data.status) {
+                        resultHTML += '<option value="">Select User</option>';
+                        $.each(data.user_list, function (key, value) {
+                            resultHTML += '<option value="' + value.user_id + '">' + value.name + '</option>';
+                        });
+                    } else {
+                        resultHTML = '<option value=""">No Records Available</option>';
+                    }
+                    $("#user").html(resultHTML);
+                    $('#user').selectpicker('refresh');
+
+
+                    console.log(data);
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+
+
+        }
+
+        function PopulatecancelList() {
+            var date = new Date();
+            var start_date = new Date(date.getFullYear(), date.getMonth(), 1);
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+            $('#from_date').datepicker({
+                format: 'dd-mm-yyyy',
+                // Highlight: true,
+
+                autoclose: true,
+            });
+
+            $('#to_date').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+            });
+
+
+
+            $('#from_date').datepicker('setDate', start_date);
+            $('#to_date').datepicker('setDate', today);
+
+            var from_date = $("#from_date").val();
+            var to_date = $("#to_date").val();
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_cancel_booking.php",
+                data: { from_date: from_date, to_date: to_date, action_type: 'CANCEL_LISTING' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+                async: false
+            })
+                .done(function (data) {
+                    console.log(data);
+                    var rent_applicable = '';
+                    var resultHTML = ''; var i = 0;
+                    var total_amt = 0;
+
+                    if (data.status) {
+
+
+
+
+                        $.each(data.cancel_list, function (key, value) {
+                            i++;
+                            var cancel_mail_file = '&nbsp;';
+
+                            //total_amt = ((total_amt * 1 ) * 5);
+
+                            resultHTML += '<tr class="det_emp">';
+                            resultHTML += '<td>' + i + '</td>';
+                            resultHTML += '<td>' + value.invoice_no + '</td>';
+                            resultHTML += '<td>' + value.generated_date + '</td>';
+                            resultHTML += '<td>' + value.invoice + '</td>';
+                            resultHTML += '<td>' + value.booking_no + '</td>';
+                            resultHTML += '<td>' + value.company_name + '</td>';
+                            resultHTML += '<td>' + value.client_name + '</td>';
+                            resultHTML += '<td>' + value.gross_amount + '</td>';
+
+                            total_amt = (5 + 5);
+
+
+                            resultHTML += '<td>' + value.discount_amount + '</td>';
+                            resultHTML += '<td>' + value.net_amount + '</td>';
+                            resultHTML += '<td>' + value.cgst_percent + '</td>';
+                            resultHTML += '<td>' + value.cgst_amount + '</td>';
+                            resultHTML += '<td>' + value.sgst_percent + '</td>';
+                            resultHTML += '<td>' + value.sgst_amount + '</td>';
+                            resultHTML += '<td>' + value.igst_percent + '</td>';
+                            resultHTML += '<td>' + value.igst_amount + '</td>';
+                            resultHTML += '<td>' + value.payable_amount + '</td>';
+                            //$("#gross_total").val(total_amt); 								
+                            resultHTML += '</tr>';
+                            //alert (total_amt); 
+
+
+                        });
+                        //$("#gross_total").text(total_amt); 
+                    }
+
+
+                    else {
+                        resultHTML = '<td>No Booking Available</td>';
+                    }
+
+
+                    $("#cancel_table").dataTable().fnDestroy();
+                    $('#cancel_booking_table').html(resultHTML);
+                    $('#cancel_table').DataTable();
+
+                    //alert(data.cancel_list.invoice_no); 
+
+
+                })
+
+        }
+
+        $("#search_button").click(function (event) {
+            event.preventDefault();
+            $('#cancel_booking_table').text("");
+            //$('#mytable').DataTable();
+            //('#booking_table').text("");
+            $("#list_buttons_div_srch").show();
+            //$("#list_buttons_div").hide();
+
+            populate_cancel();
+        });
+
+        function populate_cancel() {
+
+
+
+
+            $("#action_type").val("INV_REGISTER");
+            var sendData = $("#form1").serializeArray();
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_cancel_booking.php",
+                data: sendData,
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true,
+            })
+                .done(function (data) {
+                    var resultHTML = " ";
+                    var i = 0;
+                    var gross_amt = 0;
+                    var discount_amount = 0;
+                    var net_amount = 0;
+                    var cgst_amount = 0;
+                    var sgst_amount = 0;
+                    var igst_amount = 0;
+                    var payable_amount = 0;
+
+                    if (data.status) {
+                        //alert(data.search_list.invoice); 
+                        $.each(data.search_list, function (key, value) {
+                            i++;
+
+                            resultHTML += '<tr class="det_emp">';
+                            resultHTML += '<td>' + i + '</td>';
+                            resultHTML += '<td>' + value.invoice_no + '</td>';
+                            resultHTML += '<td>' + value.generated_date + '</td>';
+                            resultHTML += '<td>' + value.invoice + '</td>';
+                            resultHTML += '<td>' + value.booking_no + '</td>';
+                            resultHTML += '<td>' + value.company_name + '</td>';
+                            resultHTML += '<td>' + value.client_name + '</td>';
+                            resultHTML += '<td align="right">' + value.gross_amount + '</td>';
+                            gross_amt = ((gross_amt * 1) + (value.gross_amount * 1));
+                            resultHTML += '<td align="right">' + value.discount_amount + '</td>';
+                            discount_amount = ((discount_amount * 1) + (value.discount_amount * 1));
+                            resultHTML += '<td>' + value.net_amount + '</td>';
+                            net_amount = ((net_amount * 1) + (value.net_amount * 1));
+                            resultHTML += '<td align="right">' + value.cgst_percent + '</td>';
+                            resultHTML += '<td align="right">' + value.cgst_amount + '</td>';
+                            cgst_amount = Math.round(((cgst_amount * 1) + (value.cgst_amount * 1)));
+                            resultHTML += '<td align="right">' + value.sgst_percent + '</td>';
+                            resultHTML += '<td align="right">' + value.sgst_amount + '</td>';
+                            sgst_amount = Math.round(((sgst_amount * 1) + (value.sgst_amount * 1)));
+                            resultHTML += '<td align="right"' + value.igst_percent + '</td>';
+                            resultHTML += '<td align="right">' + value.igst_amount + '</td>';
+                            igst_amount = ((igst_amount * 1) + (value.igst_amount * 1));
+                            resultHTML += '<td>' + value.payable_amount + '</td>';
+                            payable_amount = (((payable_amount * 1) + (value.payable_amount * 1)));
+                            resultHTML += '</tr>';
+
+
+
+                        })
+                        //var a = payable_amount;
+                        var final_payable_amount = payable_amount.toFixed(2);
+                        var final_igst_amount = igst_amount.toFixed(2);
+                        var final_cgst_amount = cgst_amount.toFixed(2);
+                        var final_discount_amount = discount_amount.toFixed(2);
+                        var final_gross_amt = gross_amt.toFixed(2);
+                        $("#gross_total").text(final_gross_amt);
+                        $("#discount_amount").text(final_discount_amount);
+                        $("#net_amount").text(net_amount);
+                        $("#cgst_amount").text(final_cgst_amount);
+                        $("#sgst_amount").text(final_cgst_amount);
+                        $("#igst_amount").text(final_igst_amount);
+                        $("#payable_amount").text(final_payable_amount);
+                        //alert (gross_amt);
+                    }
+                    else {
+                        resultHTML = '<td>No Booking Available</td>';
+                    }
+
+                    $("#cancel_table").dataTable().fnDestroy();
+                    $('#cancel_booking_table').html(resultHTML);
+                    $('#cancel_table').DataTable();
+
+                })
+
+
+
+
+        }
+
+
+        $("#download_excel_srch").click(function (event) {
+            event.preventDefault();
+            var vendor = $("#vendor").val();
+            var inv = $("#inv").val();
+            var from_date = $("#from_date").val();
+            var to_date = $("#to_date").val();
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_cancel_booking.php",
+                data: { vendor: vendor, inv: inv, from_date: from_date, to_date: to_date, action_type: 'DOWNLOAD_EXCEL_SEARCH' },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    console.log(data);
+
+                    if (data.status) {
+                        //window.location.href = "../available-sites/" + data.file_name;
+                        var $a = $("<a>");
+                        $a.attr("href", data.file);
+                        $a.attr("target", "_blank");
+                        $a.text("Download Excel");
+                        $("#list_buttons_div_srch").append($a);
+                        //var file_name=data.file_name;
+                        $a.attr("download", data.file_name + ".xlsx");
+                        $a[0].click();
+                        $a.remove();
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+        });
+    </script>
+</body>
+
+</html>

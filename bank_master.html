@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>
+        user();
+
+    </script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>
+        footer();
+
+    </script>
+    <section class="content content30" id="user_permission_acc_content">
+        <div class="container-fluid">
+            <!--<div class="block-header">
+                <h2>DASHBOARD</h2> </div>-->
+            <!-- Widgets -->
+            <div class="clearfix">
+                <div class="card">
+                    <div class="header">
+                        <div class="row clearfix">
+                            <div class="col-xs-12 col-sm-6">
+                                <h2>Bank List</h2>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 align-right">
+                                <button type="button" class="btn btn-primary waves-effect add_button_user_per"
+                                    data-toggle="modal" data-target="#add_brand" onclick="refresh_all()"><i
+                                        class="material-icons">add</i>Add bank</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+
+                        <div class="table-responsive">
+                            <table id="brandtable" class="table table-bordered table-striped table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <th width="10%">Serial No.</th>
+                                        <th width="30%">Bank Name</th>
+                                        <th width="40%">Bank Head Office Address</th>
+
+                                        <th align="center" width="10%">Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="getbankresult">
+
+                                    <!--<tr>
+                                        <td>1</td>
+                                           
+                                        <td>br/0007</td>
+                                        <td>Bishal Cement</td>
+										 <td></td>
+                                          <td  align="center"><a class="btn btn-sm btn-info" href="#edit_brand"   data-toggle="modal" onclick="refresh_all()"><i class="fa fa-edit"></i></a> </td>
+	  </tr>-->
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="add_brand" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card">
+                <div class="header bg-blue-grey">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                            onclick="modal()">&times;</span></button>
+                    <h2 class="modal-title"><span id="add_edit_msg"></span> Bank List </h2>
+                </div>
+                <div class="modal-body">
+                    <div id="show_msg"></div>
+                    <form id="form_validation1" method="POST" data-validate="parsley" name="frm_add_edit"
+                        class="formEditDataTemplateField" action="" autocomplete="off">
+                        <div class="row">
+                            <input type="hidden" name="action_type" id="action_type" value="">
+                            <input type="hidden" name="upd_brn_id" id="upd_brn_id" value="">
+                            <!-- <div class="col-md-5 col-sm-12">
+								 <input type="hidden" name="action_type" id="action_type" value="">
+								<input type="hidden" name="upd_brn_id" id="upd_brn_id" value="">
+                                <div class="form-group form-float">
+                                    
+                                        <select id="category_id" name="category_id"  data-live-search="true" class="form-control show-tick"  >
+                                            </select>
+                                </div>
+                            </div> -->
+                            <div class="col-md-7 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label">Bank Name <span class="aster">*</span></label>
+                                        <input type="text" class="form-control" id="bank_name" name="bank_name"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label">Bank Head Office Address <span
+                                                class="aster">*</span></label>
+                                        <input type="text" class="form-control" id="b_address" name="b_address"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-12 col-sm-12">
+                                <button class="btn btn-primary waves-effect btn-lg btn-block"
+                                    type="submit">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <!--<script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>-->
+
+    <!-- Custom Js -->
+    <!--   <script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+    <!-- <script src="assets/js/pages/tables/jquery-datatable.js"></script>-->
+    <script>
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            user_access();
+            populatedata();
+            populatecategory(0);
+            //populatesatelist();
+        });
+        function refresh_all() {
+            $('#show_msg').html('');
+            $("#add_edit_msg").text('Add');
+            document.getElementById("form_validation1").reset();
+            //$("#super_category").selectpicker('refresh');
+            $("#upd_brn_id").val('');
+            //$('#brand_code').html('gfhfghfghgfh');
+            modal();
+
+        }
+        function modal() {
+            $('#brand_code').html('');
+        }
+        function populatedata() {
+
+
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_contact_person_master.php',
+                data: { action_type: 'BANK_LISTING' },
+                dataType: 'json',
+                encode: true
+            })
+
+                //console.log(data);
+                //alert(1);
+                .done(function (data) {
+                    var resultHTML = '';
+                    var i = 0;
+                    if (data.status) {
+                        $.each(data.bank_list, function (key, value) {
+                            i++;
+                            resultHTML += '<tr>';
+                            resultHTML += '<td>' + i + '</td>';
+                            resultHTML += '<td id="brand_modal">' + value.bank_name + '</td>';
+                            resultHTML += '<td>' + value.bank_head_office_address + '</td>';
+
+
+                            resultHTML += '<td align="center"><button type="button" class="btn btn-sm btn-info" data-toggle="modal"  onclick="update_person(' + value.bank_id + ')"><i class="fa fa-edit"></i></button></td>';
+                            resultHTML += '</tr>';
+                        });
+
+                        $("#getbankresult").html(resultHTML);
+                        $("#brandtable").DataTable();
+
+
+                    }
+
+
+                })
+
+        }
+
+
+        function update_person(bank_id) {
+            $('#add_brand').modal('show');
+            $('#show_msg').html('');
+            $("#add_edit_msg").text('Edit');
+            var modal = $('#add_brand');
+            modal.find('.form-line').addClass('focused');
+            $("#upd_brn_id").val(bank_id);
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_contact_person_master.php',
+                data: { bank_id: bank_id, action_type: 'EDIT_BANK' },
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    if (data.status) {
+
+                        $("#bank_name").val(data.cat_upd_list.bank_name);
+                        $("#b_address").val(data.cat_upd_list.bank_head_office_address);
+                        //  populatecategory(data.cat_upd_list.branch_id);
+                        //$("#category_id").selectpicker('refresh');
+
+                    }
+
+                })
+        }
+
+        $("#form_validation1").submit(function (event) {
+            event.preventDefault();
+
+            //$("#add_edit_category_btn").prop('disabled', true);
+            $("#action_type").val("ADD_EDIT_BANK");
+            var senData = $("#form_validation1").serializeArray();
+            var get_edit_data = $("#upd_brn_id").val();
+
+            if (get_edit_data != '') {
+                if (confirm('Do you want to Edit this?')) {
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'handler/ajax_contact_person_master.php',
+                        data: senData,
+                        dataType: 'json',
+                        encode: true,
+                    })
+                        .done(function (data) {
+                            var msg = '';
+                            if (data.id == 0) {
+                                msg = " Already Exists !";
+                                var resulthtml = '';
+                                resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                                $('#show_msg').html(resulthtml);
+                                //$("#add_edit_category_btn").prop('disabled', false);
+                            }
+                            else if (data.id == 3) {
+                                msg = data.msg;
+                                var resulthtml = '';
+                                resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                                $('#show_msg').html(resulthtml);
+                                $("#add_edit_category_btn").prop('disabled', false);
+                            }
+                            else {
+
+                                if (data.id == 2) {
+                                    msg = "Successfully Updated";
+                                }
+                                if (data.id == 1) {
+                                    msg = "Successfully Inserted";
+
+                                }
+                                var resulthtml = '';
+                                resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                                $('#show_msg').html('');
+                                $('#show_msg').append(resulthtml);
+                                var href = "bank_master.html";
+                                setTimeout(function () { window.location.href = href; }, 2000);
+
+                            }
+                        })
+                        // using the fail promise callback
+                        .fail(function (data) {
+                            $("#add_edit_category_btn").prop('disabled', false);
+                            // show any errors
+                            // best to remove for production
+                            console.log(data);
+                        });
+                }
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'handler/ajax_contact_person_master.php',
+                    data: senData,
+                    dataType: 'json',
+                    encode: true,
+                })
+                    .done(function (data) {
+                        var msg = '';
+                        if (data.id == 0) {
+                            msg = " Already Exists !";
+                            var resulthtml = '';
+                            resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                            $('#show_msg').html(resulthtml);
+                            //$("#add_edit_category_btn").prop('disabled', false);
+                        }
+                        else if (data.id == 3) {
+                            msg = data.msg;
+                            var resulthtml = '';
+                            resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                            $('#show_msg').html(resulthtml);
+                            $("#add_edit_category_btn").prop('disabled', false);
+                        }
+                        else {
+
+                            if (data.id == 2) {
+                                msg = "Successfully Updated";
+                            }
+                            if (data.id == 1) {
+                                msg = "Successfully Inserted";
+
+                            }
+                            var resulthtml = '';
+                            resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                            $('#show_msg').html('');
+                            $('#show_msg').append(resulthtml);
+                            var href = "bank_master.html";
+                            setTimeout(function () { window.location.href = href; }, 2000);
+
+                        }
+                    })
+                    // using the fail promise callback
+                    .fail(function (data) {
+                        $("#add_edit_category_btn").prop('disabled', false);
+                        // show any errors
+                        // best to remove for production
+                        console.log(data);
+                    });
+
+            }
+        })
+
+
+        function populatecategory(selected) {
+            var resultHTML = '';
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_contact_person_master.php',
+                data: { action_type: 'CATEGORY' },
+                dataType: 'json',
+                encode: true,
+
+            })
+                .done(function (data) {
+                    //	console.log(data);
+                    //alert(1);
+
+
+                    if (data.status) {
+
+                        resultHTML += '<option value="" disabled>Select Branch</option>';
+
+                        $.each(data.category_list, function (key, value) {
+                            var selected_txt = '';
+                            //
+                            // 		if(selected!=undefined){
+                            // 		var selected_id = selected.split(",");
+                            // if(selected_id.includes(value.category_id)){
+                            if (value.branch_id == selected) {
+                                //alert(value.branch_id);alert(selected);
+                                selected_txt = 'selected';
+                                //alert(selected_txt);
+                            }
+                            //selected_txt ='selected';
+                            // }
+                            // 		}
+                            resultHTML += '<option value="' + value.branch_id + '" ' + selected_txt + ' >' + value.branch_name + '</option>';
+                        });
+                    }
+                    else {
+                        resultHTML += '<option value="">No Data Available</option>'
+                    }
+                    //  alert(resultHTML);
+                    $("#category_id").html(resultHTML);
+
+                    $("#category_id").selectpicker('refresh');
+                    //alert(resultHTML);
+
+
+                })
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

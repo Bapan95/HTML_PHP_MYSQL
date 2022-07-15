@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <link href="js/bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>user();</script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>footer();</script>
+    <section class="content" id="user_permission_acc_content">
+        <div class="container-fluid">
+            <div id="show_msg"></div>
+            <!--<div class="block-header">
+                 </div>-->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Invoice List</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right js-sweetalert">
+                                    <!-- <button type="button" class="btn btn-primary waves-effect add_button_user_per" id="add_invoice_btn" data-toggle="modal" data-target="#invoice_modal" onclick="refresh_all()"><i class="material-icons">add</i> Add Invoice </button> -->
+                                    <button type="button" class="btn btn-primary waves-effect"
+                                        onclick="booking_invoice();" id="inv_booking"><i class="material-icons">add</i>
+                                        Booking Invoice</button>
+                                    <!-- <button type="button" class="btn btn-primary waves-effect"
+                                        onclick="mounting_invoice();" id="inv_mounting"><i
+                                            class="material-icons">add</i> Mounting Invoice</button>
+                                    <button type="button" class="btn btn-primary waves-effect"
+                                        onclick="printing_invoice();" id="inv_printing"><i
+                                            class="material-icons">add</i> Printing Invoice</button> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body">
+
+                            <div class="row ">
+
+                                <div class="table-responsive">
+                                    <table
+                                        class="table table-bordered table-striped table-hover js-exportable dataTable"
+                                        id="invoice_table">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;" width="10%">Sl.No.</th>
+                                                <th style="text-align:center;">Invoice Type</th>
+                                                <th style="text-align:center;" width="30%"> Invoice No. </th>
+                                                <th style="text-align:center;" width="10%"> Invoice Date </th>
+                                                <th style="text-align:center;" width="10%"> Gross Amount </th>
+                                                <th style="text-align:center;" width="10%"> GST Amount </th>
+                                                <th style="text-align:center;" width="10%"> Payable Amount </th>
+                                                <th style="text-align:center;" width="10%"> Final Invoice </th>
+                                                <th style="text-align:center;" width="10%"> Invoice Cancel </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="getresult">
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="modal fade" id="invoice_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card">
+                <div class="header bg-blue-grey">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title"><span id="add_edit_msg"></span> Invoice </h2>
+                </div>
+                <div class="modal-body">
+                    <div id="show_msg"></div>
+                    <form id="form_validation1" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="name" id="name" required>
+                                        <label class="form-label"> Invoice Number *</label>
+                                        <div id="msg1" style="color: red; display: none;">This field is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="eff_start_date" class="datepicker form-control"
+                                            name="eff_start_date" required>
+                                        <label class="form-label">Effective Start Date *</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="eff_end_date" class="datepicker form-control"
+                                            name="eff_end_date" required>
+                                        <label class="form-label">Effective End Date *</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="action_type" name="action_type">
+                            <input type="hidden" id="invoice_id" name="invoice_id">
+                            <input type="hidden" id="booking_id" name="booking_id">
+                            <div class="col-md-12 col-sm-12">
+                                <button id="add_invoice_list" class="btn btn-primary btn-lg waves-effect btn-block"
+                                    type="submit">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <!--<script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>-->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <!--  <script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+
+    <script>
+
+        var booking_id = getParameterByName('id');
+        //var parent_booking_id;
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+
+            //alert(booking_id);
+            $('#booking_id').val(booking_id);
+            // user_access();
+            populatedata(booking_id);
+            // alert("aritra");
+        });
+    </script>
+
+    <script>
+
+        function refresh_all() {
+            $("#add_edit_msg").text('Add');
+            document.getElementById("form_validation1").reset();
+        }
+
+
+        function populatedata(booking_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_invoice.php',
+                data: { action_type: 'INVOICE_LISTING', booking_id: booking_id },
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    var resultHTML = ''; var i = 0;
+                    if (data.status) {
+                        $.each(data.invoice_list, function (key, value) {
+                            i++;
+                            resultHTML += '<tr>';
+                            resultHTML += '<td align="center">' + i + '</td>';
+                            resultHTML += '<td>' + value.invoice_type + '</td>';
+                            resultHTML += '<td>' + value.invoice_no + '</td>';
+                            resultHTML += '<td>' + value.invoice_date + '</td>';
+                            resultHTML += '<td align="right">' + value.gross_total + '</td>';
+                            resultHTML += '<td align="right">' + value.gst_amt + '</td>';
+                            resultHTML += '<td align="right">' + value.payable_amount + '</td>';
+                            //resultHTML += '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-info waves-effect edit_in_menu"  onclick="get_invoice_det('+value.invoice_id+')" ><i class="material-icons">edit</i></button></td>';
+                            if (value.invoice_type == 'Booking Invoice') {
+                                //resultHTML +=  '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-primary  waves-effect" onclick="final_invoice('+value.invoice_id+')">Print Invoice</button></td>';
+                                resultHTML += '<td style="text-align:center;"><a href="ooh_bill.html?invoice_id=' + value.invoice_id + '" class="btn btn-sm btn-primary waves-effect">Print Invoice</a></td>';
+                            }
+                            if (value.invoice_type == 'Mounting Invoice') {
+                                // resultHTML +=  '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-primary  waves-effect" onclick="final_mounting_invoice('+value.booking_id+')">Print Invoice</button></td>';
+                                resultHTML += '<td style="text-align:center;"><a href="mounting_bill.html?invoice_id=' + value.invoice_id + '" class="btn btn-sm btn-primary waves-effect">Print Invoice</a></td>';
+                            }
+                            if (value.invoice_type == 'Printing Invoice') {
+                                // resultHTML +=  '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-primary  waves-effect" onclick="final_printing_invoice('+value.booking_id+')">Print Invoice</button></td>';
+                                resultHTML += '<td style="text-align:center;"><a href="printing_bill.html?invoice_id=' + value.invoice_id + '" class="btn btn-sm btn-primary waves-effect">Print Invoice</a></td>';
+                            }
+
+                            if (value.cancel_status == 'A') {
+                                resultHTML += '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-danger waves-effect" onclick="cancel_invoice(' + value.invoice_id + ',\'' + value.invoice_type + '\')">Cancel</button></td>';
+                            }
+                            if (value.cancel_status == 'C') {
+                                resultHTML += '<td style="text-align:center;">Cancelled</td>';
+                            }
+
+                            resultHTML += '</tr>';
+                            if (value.invoice_type == 'Booking Invoice' && value.cancel_status == 'A') {
+                                //alert("mm");
+                                //$('#inv_booking').hide();
+                            }
+                            if (value.invoice_type == 'Mounting Invoice' && value.cancel_status == 'A') {
+                                //alert("mm");
+                                //$('#inv_mounting').hide();
+                            }
+                            if (value.invoice_type == 'Printing Invoice' && value.cancel_status == 'A') {
+                                //$('#inv_printing').hide();
+                            }
+
+                        });
+                        //alert(data.invoice_list.invoice_type);
+                        var eff_start_date = data.booking_header_data.billing_from;
+                        var eff_end_date = data.booking_header_data.billing_to;
+                        $('#eff_start_date').datepicker({
+                            autoclose: true,
+                            format: 'dd-mm-yyyy'
+                        })
+                        $('#eff_end_date').datepicker({
+                            autoclose: true,
+                            format: 'dd-mm-yyyy'
+                        })
+                    } else {
+                        resultHTML += '<tr align="center"><td colspan="5">No Data Available </td></tr>';
+                    }
+                    $("#getresult").html(resultHTML);
+                    $("#invoice_table").DataTable();
+
+                })
+
+        }
+
+        function mounting_invoice() {
+            //var selected_site_str = '';
+            // if(type == 'selected_site'){
+            //   selected_site_str = '&parent_selected_site=' + window.btoa(selected_site.filter(arrayUnique));
+            // }
+            //alert(booking_id);
+            window.location.href = 'mounting_invoice.html?parent_booking_id=' + booking_id;
+        }
+
+        function booking_invoice() {
+            //var selected_site_str = '';
+            // if(type == 'selected_site'){
+            //   selected_site_str = '&parent_selected_site=' + window.btoa(selected_site.filter(arrayUnique));
+            // }
+            //alert(booking_id);
+            window.location.href = 'generate_booking_invoice.html?parent_booking_id=' + booking_id;
+        }
+
+        function printing_invoice() {
+            //var selected_site_str = '';
+            // if(type == 'selected_site'){
+            //   selected_site_str = '&parent_selected_site=' + window.btoa(selected_site.filter(arrayUnique));
+            // }
+            window.location.href = 'printing_invoice.html?parent_booking_id=' + booking_id;
+        }
+
+        /*function final_invoice(){
+              //alert(booking_id);
+            //window.open("final_bill.html?booking_id="+booking_id);
+          window.open("ooh_bill.html?invoice_id="+booking_id);
+        }*/
+
+        function final_mounting_invoice() {
+            //alert(booking_id);
+            window.open("mounting_bill.html?booking_id=" + booking_id);
+        }
+        //function booking_invoice(){
+        //alert(booking_id);
+        //window.open("mounting_bill.html?booking_id="+booking_id);
+        //}
+
+
+        function final_printing_invoice() {
+            //alert(booking_id);
+            window.open("printing_bill.html?booking_id=" + booking_id);
+        }
+
+        function cancel_invoice(invoice_id, invoice_type) {
+            if (confirm('Are you want to Cancel this?')) {
+                $.ajax({
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: "handler/ajax_invoice.php",
+                    data: { invoice_id: invoice_id, invoice_type: invoice_type, action_type: 'CANCEL_INVOICE' },
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true
+                })
+
+                    // using the done promise callback
+                    .done(function (data) {
+                        console.log(data);
+                        var resulthtml = '';
+                        if (data.status) {
+                            resulthtml = '<div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + data.msg + '</div>';
+                        }
+                        else {
+                            resulthtml = '<div class="alert alert-danger alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + data.msg + '</div>';
+                        }
+                        $('#show_msg').html(resulthtml);
+                        var href = "invoice_manage.html";
+                        setTimeout(function () {
+                            window.location.href = href + '?id=' + booking_id;
+                            $(this).prop('disabled', false);
+                        }, 3000);
+                    })
+                    // using the fail promise callback
+                    .fail(function (data) {
+                        // show any errors
+                        // best to remove for production
+                        console.log(data);
+                    });
+            }
+        }
+
+
+
+
+        $("#form_validation1").submit(function (event) {
+            event.preventDefault();
+            $("#action_type").val("ADD_EDIT_INVOICE");
+            var senData = $("#form_validation1").serializeArray();
+            senData.booking_id = booking_id;
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_invoice.php',
+                data: senData,
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    var msg = '';
+                    if (data.id == 0) {
+                        msg = "Invoice already exists between the selected date range! Please check the list first.";
+                        resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                        $('#show_msg').html(resulthtml);
+                        $("#add_invoice_list").prop('disabled', false);
+                    }
+                    else {
+
+                        if (data.id == 2) { msg = "Successfully Updated"; } if (data.id == 1) { msg = "Successfully Inserted"; }
+                        var resulthtml = '';
+                        resulthtml += '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' + msg + '</div>';
+                        $('#show_msg').append(resulthtml);
+                        setTimeout(function () { location.reload(); $("#add_invoice_list").prop('disabled', false); }, 2000);
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    $("#add_invoice_list").prop('disabled', false);
+                    console.log(data);
+                });
+
+
+        })
+        function get_invoice_det(invoice_id) {
+            var booking_id = $("#booking_id").val();
+            $(invoice_modal).modal('show');
+            $("#add_edit_msg").text('Edit');
+            var modal = $('#invoice_modal');
+            modal.find('.form-line').addClass('focused');
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: "handler/ajax_invoice.php",
+                data: { action_type: 'SELECT_INVOICE', booking_id: booking_id },
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                // using the done promise callback
+                .done(function (data) {
+                    if (data.invoice_value.invoice_no) {
+
+                        $("#name").val(data.invoice_value.invoice_no);
+                        $("#eff_start_date").val(data.invoice_value.eff_start_date);
+                        $("#eff_end_date").val(data.invoice_value.eff_end_date);
+                        $("#invoice_id").val(data.invoice_value.invoice_id);
+                        var eff_start_date = data.invoice_value.eff_start_date;
+                        var eff_end_date = data.invoice_value.eff_end_date;
+                        eff_start_date = new Date(eff_start_date);
+                        eff_end_date = new Date(eff_end_date);
+                        var start_date = new Date(eff_start_date.getFullYear(), eff_start_date.getMonth(), eff_start_date.getDate());
+                        $('#eff_start_day').datepicker({
+                            format: 'dd-mm-yyyy',
+                            todayHighlight: true,
+                            autoclose: true,
+                        });
+                        var end_date = new Date(eff_end_date.getFullYear(), eff_end_date.getMonth(), eff_end_date.getDate());
+                        $('#eff_end_date').datepicker({
+                            format: 'dd-mm-yyyy',
+                            todayHighlight: true,
+                            autoclose: true,
+                        });
+
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+
+
+
+        }
+    </script>
+</body>
+
+</html>

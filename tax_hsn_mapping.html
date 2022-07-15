@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&subset=latin,cyrillic-ext"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="js/datepicker.min.css" rel="stylesheet">
+    <link href="js/bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="js/nav.js"></script>
+    <script src="js/common-functions.js"></script>
+
+
+</head>
+
+<body class="theme-indigo">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon"> <i class="material-icons">search</i> </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search"> <i class="material-icons">close</i> </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <div id="top_nav">
+    </div>
+    <!-- #Top Bar -->
+    <!-- User Info -->
+    <script>user();</script>
+    <!-- #User Info -->
+
+
+    <!-- Menu -->
+    <div id="mob_nav_ajax_user"></div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <script>footer();</script>
+    <section class="content content30" id="user_permission_acc_content">
+        <div class="container-fluid">
+            <!--<div class="block-header">
+                 </div>-->
+            <div class="clearfix">
+                <div class="card">
+                    <div class="header">
+                        <div class="row clearfix">
+                            <div class="col-xs-12 col-sm-6">
+                                <h2>Tax Hsn Mapping</h2>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right js-sweetalert">
+                                <button type="button" class="btn btn-primary waves-effect add_button_user_per"
+                                    data-toggle="modal" data-target="#add_tax_hsn" onclick="refresh_all()"
+                                    id="set_date"><i class="material-icons">add</i> Add Tax Hsn </button>
+
+
+                                <!-- <span id="list_buttons_div" class="p_left15 js-sweetalert">
+								<button class="btn bg-green waves-effect  action_btn pull-right download_class" type="submit" id="download_excel"> <i class="fa fa-download"></i> Download Excel</button>
+							</span> -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-exportable dataTable"
+                                    id="uom_table">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%" style="text-align:center;">Sl.No.</th>
+                                            <th>TAX Name</th>
+                                            <th style="text-align:center;">HSN / SAC</th>
+                                            <th style="text-align:center;">Effective Start Date</th>
+                                            <!-- <th width="5%" style="text-align:center;">Status</th> -->
+                                            <th align="center" style="text-align:center;">Edit</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="getresult">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="modal fade" id="add_tax_hsn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card">
+                <div class="header bg-blue-grey">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title"><span id="add_edit_msg"></span> Tax Hsn Mapping</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="show_msg"></div>
+                    <form id="form_validation1" method="POST">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus"><label for="state" class="form-label">Select Tax
+                                            <span class="aster">*</span></label>
+                                        <select id="tax_id" name="tax_id" data-live-search="true"
+                                            class="form-control show-tick" required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused-cus"><label for="state" class="form-label">Select HSN
+                                            / SAC <span class="aster">*</span></label>
+                                        <select id="hsn_id" name="hsn_id" data-live-search="true"
+                                            class="form-control show-tick" required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group form-float ">
+                                    <div class="form-line focused-cus">
+                                        <label class="form-label ">Eff Start Date <span class="aster">*</span></label>
+                                        <input type="text" id="from_date" class="form-control" name="eff_strat_date"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="action_type" id="action_type" value="">
+                            <input type="hidden" name="hidd_tax_hsn_mapping_id" id="hidd_tax_hsn_mapping_id" value="">
+
+                            <div class="col-md-12 col-sm-12">
+                                <button id="add_edit_uom_list" class="btn btn-primary btn-lg waves-effect btn-block"
+                                    type="submit">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <!-- <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/plugins/node-waves/waves.js"></script>
+    <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <!--  <script src="assets/js/admin.js"></script> -->
+    <script src="assets/js/pages/forms/form-validation.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            getAppName();
+            isLogin();
+            bind_top_nav();
+            bind_menu_mobile();
+            // user_access();
+            populatedata();
+
+            get_tax_list();
+            get_hsn_sac_list();
+        });
+
+
+
+        /*$(function () {
+           
+            //Exportable table
+        $('.js-exportable').DataTable({
+                dom: 'Bfrtip',
+                responsive: true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                   'excel'
+                ]
+            });
+        });*/
+    </script>
+
+    <script>
+        function refresh_all() {
+            $("#add_edit_msg").text('Add');
+            // $("#bank_id").selectpicker('refresh');
+            $("#hsn_id").selectpicker(' ');
+            $("#tax_id").selectpicker(' ');
+            $("#from_date").selectpicker(' ');
+            document.getElementById("form_validation1").reset();
+        }
+
+        $("#set_date").click(function () {
+            var nowTemp = new Date();
+            var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+            var checkin = $('#from_date').datepicker({
+
+                /*beforeShowDay: function (date) {
+                    return date.valueOf() >= now.valueOf();
+                },*/
+                autoclose: true,
+                format: 'dd-mm-yyyy',
+                startDate: now,
+            })
+
+        });
+
+        $('#from_date').on('show', function (e) {
+            if (e.date) { $(this).data('stickyDate', e.date); }
+            else { $(this).data('stickyDate', null); }
+        }).on('hide', function (e) {
+            var stickyDate = $(this).data('stickyDate');
+            if (!e.date && stickyDate) { $(this).datepicker('setDate', stickyDate); $(this).data('stickyDate', null); }
+        });
+
+
+        function get_tax_list() {
+            //alert(1);
+            $.ajax({
+                type: "POST",
+                url: "handler/ajax_tax_hsn_mapping.php",
+                data: { action_type: 'LIST_ALL_TAX' },
+                dataType: 'json',
+                encode: true,
+                success: function (result) {
+                    if (result.status) {
+                        var options = '<option value="">Select</option>';
+                        $.each(result.tax_list, function (key, value) {
+                            //alert(value.tax_id);
+                            options += '<option value="' + value.tax_id + '">' + value.tax_name + '</option>';
+                        });
+                        $("#tax_id").html(options);
+                        $('#tax_id').selectpicker('refresh');
+                    }
+                }
+            })
+        }
+
+
+        function get_hsn_sac_list() {
+            //alert(1);
+            $.ajax({
+                type: "POST",
+                url: "handler/ajax_tax_hsn_mapping.php",
+                data: { action_type: 'LIST_ALL_HSN_SAC' },
+                dataType: 'json',
+                encode: true,
+                success: function (result) {
+                    if (result.status) {
+                        var options = '<option value="">Select</option>';
+                        $.each(result.hsn_sac_list, function (key, value) {
+                            //alert(value.hsn_sac_id);
+                            options += '<option value="' + value.hsn_sac_id + '">' + value.hsn_sac_code + '</option>';
+                        });
+                        $("#hsn_id").html(options);
+                        $('#hsn_id').selectpicker('refresh');
+                    }
+                }
+            })
+        }
+
+        function populatedata() {
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_tax_hsn_mapping.php',
+                data: { action_type: 'MAPPING_LISTING' },
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    var resultHTML = '';
+                    var i = 0;
+                    if (data.status) {
+                        $.each(data.mapping_list, function (key, value) {
+                            i++;
+                            resultHTML += '<tr>';
+                            resultHTML += '<td align="center">' + i + '</td>';
+                            resultHTML += '<td>' + value.tax_name + '</td>';
+                            resultHTML += '<td align="center">' + value.hsn_sac_code + '</td>';
+                            resultHTML += '<td align="center">' + value.eff_start_date + '</td>';
+
+                            // resultHTML += '<td align="center">';
+                            // if (value.is_active == 1) {
+                            //     resultHTML +=
+                            //         '<button type="button" class="btn btn-sm btn-success waves-effect edit_in_menu" data-toggle="modal"  onclick="inactive(' +
+                            //         value.tax_hsn_mapping_id + ')"><i class="material-icons">done</i></button>';
+                            // } else {
+                            //     resultHTML +=
+                            //         '<button type="button" class="btn btn-sm btn-danger waves-effect edit_in_menu" data-toggle="modal"  onclick="active(' +
+                            //         value.tax_hsn_mapping_id + ')"><i class="material-icons">clear</i></button>';
+                            // }
+                            // resultHTML += '</td>';
+                            resultHTML +=
+                                '<td style="text-align:center;"><button type="button" class="btn btn-sm btn-info waves-effect edit_in_menu"  onclick="get_head(' +
+                                value.tax_hsn_mapping_id + ')" ><i class="material-icons">edit</i></button></td>';
+                            resultHTML += '</tr>';
+                        });
+                    }
+                    $("#getresult").html(resultHTML);
+                    $("#uom_table").DataTable();
+
+                })
+
+        }
+
+        // function inactive(s_id_ai) {
+        //     if (confirm('Are you want to Inactive this?')) {
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "handler/ajax_uom_master.php?action_type=active",
+        //             data: {list_s_id_ai: s_id_ai},
+        //             success: function (result) {
+        //                 populatedata();
+
+
+        //             }
+        //         });
+        //     }
+
+        // }
+
+
+        // function active(s_id_ai) {
+        //     if (confirm('Are you want to Active this?')) {
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "handler/ajax_uom_master.php?action_type=inactive",
+        //             data: {list_s_id_ai: s_id_ai},
+        //             success: function (result) {
+        //                 populatedata();
+
+
+        //             }
+        //         });
+        //     }
+
+        // }
+
+        function get_head(tax_hsn_mapping_id) {
+            $('#add_tax_hsn').modal('show');
+            $("#add_edit_msg").text('Edit');
+            var modal = $('#add_tax_hsn');
+            modal.find('.form-line').addClass('focused');
+
+            $("#hidd_tax_hsn_mapping_id").val(tax_hsn_mapping_id);
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_tax_hsn_mapping.php',
+                data: { tax_hsn_mapping_id: tax_hsn_mapping_id, action_type: 'UPDATE_TAX_HSN' },
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    if (data.status) {
+                        // $("#uom_name").val(data.tax_hsn_list.uom_name);
+                        // $("#uom_code").val(data.uom_upd_list.uom_code);
+                        //alert(data.tax_hsn_list.tax_id);
+                        $("#tax_id").val(data.tax_hsn_list.tax_id);
+                        $("#tax_id").selectpicker('refresh');
+
+                        $("#hsn_id").val(data.tax_hsn_list.hsn_sac_id);
+                        $("#hsn_id").selectpicker('refresh');
+
+                        // $("#from_date").val(data.tax_hsn_list.eff_start_date);
+                        $("#from_date").val(data.tax_hsn_list.eff_start_datea);
+
+                        var tax_date = data.tax_hsn_list.eff_start_datea;
+                        //alert(tax_date);
+                        tax_date_arr = tax_date.split('-');
+                        tax_date_new = tax_date_arr[2] + '/' + tax_date_arr[1] + '/' + tax_date_arr[0];
+                        tax_date_new = new Date(tax_date_new);
+
+                        var tax_start_date = new Date(tax_date_new.getFullYear(), tax_date_new.getMonth(), tax_date_new.getDate());
+                        //alert(tax_start_date);
+                        $('#from_date').datepicker({
+                            format: 'dd-mm-yyyy',
+                            todayHighlight: true,
+                            // startDate: today,
+                            autoclose: true,
+                        });
+                        $('#from_date').datepicker('setDate', tax_start_date);
+
+
+                    }
+                })
+        }
+
+        // function capitalize(textboxid, str) {
+        //     // string with alteast one character
+        //     if (str && str.length >= 1) {
+        //         var splitStr = str.toLowerCase().split(' ');
+        //         for (var i = 0; i < splitStr.length; i++) {
+        //             // You do not need to check if i is larger than splitStr length, as your for does that for you
+        //             // Assign it back to the array
+        //             splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        //         }
+        //         // Directly return the joined string
+        //         str = splitStr.join(' ');
+        //     }
+
+        //     document.getElementById(textboxid).value = str;
+        // }
+        $("#form_validation1").submit(function (event) {
+            event.preventDefault();
+
+
+            $("#add_edit_uom_list").prop('disabled', true);
+            $("#action_type").val("ADD_EDIT_UOM");
+            var senData = $("#form_validation1").serializeArray();
+            $.ajax({
+                type: 'POST',
+                url: 'handler/ajax_tax_hsn_mapping.php',
+                data: senData,
+                dataType: 'json',
+                encode: true,
+            })
+                .done(function (data) {
+                    var msg = '';
+                    if (data.id == 0) {
+                        msg = "TAX and HSN Mapping Already Exist!";
+                        resulthtml +=
+                            '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' +
+                            msg + '</div>';
+                        $('#show_msg').html(resulthtml);
+                        $("#add_edit_uom_list").prop('disabled', false);
+                    } else {
+
+                        if (data.id == 2) {
+                            msg = "Successfully Updated";
+                        }
+                        if (data.id == 1) {
+                            msg = "Successfully Inserted";
+                        }
+                        var resulthtml = '';
+                        resulthtml +=
+                            '<div id="show_msg" class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">&times;</a>' +
+                            msg + '</div>';
+                        $('#show_msg').append(resulthtml);
+                        var href = "tax_hsn_mapping.html";
+                        setTimeout(function () {
+                            window.location.href = href;
+                            $("#add_edit_uom_list").prop('disabled', false);
+                        }, 2000);
+                    }
+                })
+                // using the fail promise callback
+                .fail(function (data) {
+                    $("#add_edit_uom_list").prop('disabled', false);
+                    // show any errors
+                    // best to remove for production
+                    console.log(data);
+                });
+
+        })
+
+    </script>
+</body>
+
+</html>
